@@ -22,7 +22,6 @@ public class panelComponent extends JPanel{
          super.paintComponent(g);
          Image imagem = new ImageIcon("background.png").getImage(); 
          g.drawImage(imagem, 0, 0, this);
-         System.out.println("Mostrando imagem");
             }    
         catch(Exception e) {  
            System.out.println("Imagem não localizada");  

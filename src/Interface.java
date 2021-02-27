@@ -1,5 +1,3 @@
-//package Interface_Gráfica;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -16,9 +14,13 @@ import java.awt.Canvas;
 import javax.swing.DropMode;
 import javax.swing.JComboBox;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Panel;
 import java.awt.Label;
 import javax.swing.JButton;
@@ -29,14 +31,16 @@ public class Interface extends JFrame {
 	private JPanel contentPane;
 	private JPanel whiteBkgdPane;
 	private JComboBox comboBox;
-	private JTextField textField;
+	private JComboBox comboBox_1;
+	private JTextField magnitude;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField maiorRisco;
+	private JTextField menorRisco;
+	private TextArea painelResultados;
 
 	
 	public static void main(String[] args) {
@@ -67,126 +71,11 @@ public class Interface extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 450);
-		contentPane = new panelComponent();
+		contentPane = new panelComponent(); //Componente onde está a imagem de background da calduladora
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setLayout(null);
-		
-		comboBox = new JComboBox();
-		comboBox.setBounds(10, 150, 90, 25);
-		contentPane.add(comboBox);
-		
-		JButton btnNewButton = new JButton("+\r\n");
-		btnNewButton.setBounds(293, 111, 45, 25);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Ok\r\n");
-		btnNewButton_1.setBounds(292, 151, 45, 25);
-		contentPane.add(btnNewButton_1);
-		
-		JButton button = new JButton("+\r\n");
-		button.setBounds(729, 111, 45, 25);
-		contentPane.add(button);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(446, 152, 90, 25);
-		contentPane.add(comboBox_1);
-		
-		JButton button_1 = new JButton("Ok\r\n");
-		button_1.setBounds(729, 151, 45, 25);
-		contentPane.add(button_1);
-		
-		/* whiteBkgdPane = new JPanel();
-		whiteBkgdPane.setForeground(Color.BLACK);
-		whiteBkgdPane.setBackground(SystemColor.controlHighlight);
-		whiteBkgdPane.setBounds(5, 100, 275, 30);*/
-		
-		JLabel lblNewLabel = new JLabel("A\u00E7\u00F5es Permanentes\r\n");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 110, 273, 25);
-		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 12));
-		lblNewLabel.setForeground(Color.WHITE);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel(" Nd");
-		lblNewLabel_1.setBounds(110, 150, 25, 25);
-		lblNewLabel_1.setFont(new Font("Roboto", Font.PLAIN, 12));
-		lblNewLabel_1.setForeground(Color.WHITE);
-		contentPane.add(lblNewLabel_1);
-		
-		textField = new JTextField();
-		textField.setBackground(SystemColor.control);
-		textField.setBounds(136, 150, 25, 25);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel label = new JLabel(" Nd");
-		label.setBounds(171, 150, 25, 25);
-		label.setFont(new Font("Roboto", Font.PLAIN, 12));
-		label.setForeground(Color.WHITE);
-		contentPane.add(label);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBackground(SystemColor.menu);
-		textField_1.setBounds(197, 150, 25, 25);
-		contentPane.add(textField_1);
-		
-		JLabel label_1 = new JLabel(" Nd");
-		label_1.setBounds(232, 150, 25, 25);
-		label_1.setFont(new Font("Roboto", Font.PLAIN, 12));
-		label_1.setForeground(Color.WHITE);
-		contentPane.add(label_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBackground(SystemColor.menu);
-		textField_2.setBounds(258, 150, 25, 25);
-		contentPane.add(textField_2);
-		
-		JLabel label_2 = new JLabel(" Nd");
-		label_2.setBounds(546, 150, 25, 25);
-		label_2.setFont(new Font("Roboto", Font.PLAIN, 12));
-		label_2.setForeground(Color.WHITE);
-		contentPane.add(label_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBackground(SystemColor.menu);
-		textField_3.setBounds(572, 150, 25, 25);
-		contentPane.add(textField_3);
-		
-		JLabel label_3 = new JLabel(" Nd");
-		label_3.setBounds(607, 150, 25, 25);
-		label_3.setFont(new Font("Roboto", Font.PLAIN, 12));
-		label_3.setForeground(Color.WHITE);
-		contentPane.add(label_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBackground(SystemColor.menu);
-		textField_4.setBounds(633, 150, 25, 25);
-		contentPane.add(textField_4);
-		
-		JLabel label_4 = new JLabel(" Nd");
-		label_4.setBounds(668, 150, 25, 25);
-		label_4.setFont(new Font("Roboto", Font.PLAIN, 12));
-		label_4.setForeground(Color.WHITE);
-		contentPane.add(label_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBackground(SystemColor.menu);
-		textField_5.setBounds(694, 150, 25, 25);
-		contentPane.add(textField_5);
-		
-		JLabel lblAesVariveis = new JLabel("A\u00E7\u00F5es Vari\u00E1veis");
-		lblAesVariveis.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAesVariveis.setFont(new Font("Roboto", Font.PLAIN, 12));
-		lblAesVariveis.setBounds(446, 116, 273, 25);
-		lblAesVariveis.setForeground(Color.WHITE);
-		contentPane.add(lblAesVariveis);
 		
 		JLabel lblCCEDE = new JLabel("CCEDE");
 		lblCCEDE.setFont(new Font("hooge 05_54", Font.BOLD, 22));
@@ -202,6 +91,66 @@ public class Interface extends JFrame {
 		lblCalculadoraDe.setForeground(Color.WHITE);
 		contentPane.add(lblCalculadoraDe);
 		
+		JLabel lblNewLabel = new JLabel("Select 1\n");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(150, 120, 100, 25);
+		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 12));
+		lblNewLabel.setForeground(Color.WHITE);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabe2 = new JLabel("Select 2\n");
+		lblNewLabe2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabe2.setBounds(300, 120, 100, 25);
+		lblNewLabe2.setFont(new Font("Roboto", Font.PLAIN, 12));
+		lblNewLabe2.setForeground(Color.WHITE);
+		contentPane.add(lblNewLabe2);
+		
+		JLabel lblNewLabe3 = new JLabel("Magnitude:\n");
+		lblNewLabe3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabe3.setBounds(450, 120, 100, 25);
+		lblNewLabe3.setFont(new Font("Roboto", Font.PLAIN, 12));
+		lblNewLabe3.setForeground(Color.WHITE);
+		contentPane.add(lblNewLabe3);		
+		
+		comboBox = new JComboBox();
+		comboBox.setBounds(150, 150, 100, 25);
+		contentPane.add(comboBox);
+		
+		comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(300, 150, 100, 25);
+		contentPane.add(comboBox_1);
+		
+		magnitude = new JTextField();
+		magnitude.setBackground(SystemColor.control);
+		magnitude.setBounds(450, 150, 100, 25);
+		contentPane.add(magnitude);
+		magnitude.setColumns(10);
+		
+		JButton btnNewButton = new JButton("+\r\n");
+		btnNewButton.setBounds(600, 150, 45, 25);
+		contentPane.add(btnNewButton);
+		
+		JButton btnCalcular = new JButton("Calcular");
+		btnCalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					//Aqui fica um componente com os códigos do Barbie e Isa
+					//Teste feito a seguir usando valor no campo magnitude:
+				double mgntd = Double.parseDouble(magnitude.getText());
+				double valor = 5*(mgntd)/3;
+				painelResultados.setText(painelResultados.getText() + "\n" + valor); //"Salva/reimprime" oq ja estava escrito antes
+				magnitude.setText("");//Limpa o input
+				System.out.println("valor: " + valor);
+				} catch(Exception erro){
+					JOptionPane.showMessageDialog(null, "erro de calculo");
+				}
+			}
+		});
+		btnCalcular.setBounds(350, 200, 100, 30);
+		btnCalcular.setFont(new Font("Roboto", Font.BOLD, 14));
+		btnCalcular.setBackground(Color.LIGHT_GRAY);
+		contentPane.add(btnCalcular);
+		
 		JLabel lblCenrioDeMaior = new JLabel("Cen\u00E1rio de maior risco");
 		lblCenrioDeMaior.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCenrioDeMaior.setFont(new Font("Roboto", Font.PLAIN, 12));
@@ -209,15 +158,11 @@ public class Interface extends JFrame {
 		lblCenrioDeMaior.setForeground(Color.WHITE);
 		contentPane.add(lblCenrioDeMaior);
 		
-		textField_6 = new JTextField();
-		textField_6.setBackground(SystemColor.control);
-		textField_6.setBounds(171, 264, 80, 25);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
-		
-		TextArea textArea = new TextArea();
-		textArea.setBounds(10, 301, 764, 100);
-		contentPane.add(textArea);
+		maiorRisco = new JTextField();
+		maiorRisco.setBackground(SystemColor.control);
+		maiorRisco.setBounds(171, 264, 80, 25);
+		contentPane.add(maiorRisco);
+		maiorRisco.setColumns(10);
 		
 		JLabel lblCenrioDeMenor = new JLabel("Cen\u00E1rio de menor risco");
 		lblCenrioDeMenor.setHorizontalAlignment(SwingConstants.CENTER);
@@ -226,10 +171,16 @@ public class Interface extends JFrame {
 		lblCenrioDeMenor.setForeground(Color.WHITE);
 		contentPane.add(lblCenrioDeMenor);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBackground(SystemColor.menu);
-		textField_7.setBounds(607, 264, 80, 25);
-		contentPane.add(textField_7);
+		menorRisco = new JTextField();
+		menorRisco.setColumns(10);
+		menorRisco.setBackground(SystemColor.menu);
+		menorRisco.setBounds(607, 264, 80, 25);
+		contentPane.add(menorRisco);
+		
+		painelResultados = new TextArea();
+		painelResultados.setFont(new Font("Roboto", Font.PLAIN, 12));
+		painelResultados.setForeground(Color.BLACK);
+		painelResultados.setBounds(10, 301, 764, 100);
+		contentPane.add(painelResultados);
 	}
 }
