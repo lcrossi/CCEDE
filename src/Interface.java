@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
@@ -30,8 +31,8 @@ public class Interface extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel whiteBkgdPane;
-	private JComboBox comboBox;
-	private JComboBox comboBox_1;
+	private JComboBox<String> comboBox;
+	private JComboBox<String> comboBox_1;
 	private JTextField magnitude;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -41,7 +42,12 @@ public class Interface extends JFrame {
 	private JTextField maiorRisco;
 	private JTextField menorRisco;
 	private TextArea painelResultados;
-
+	
+	private int contadorDeAcoes = 0;
+	
+	ArrayList<acoes> listaA = new ArrayList<acoes>(); //Lista com as seções de ação
+	acoes novaAcao = null;
+	acoes buscaVariaveis = null;
 	
 	public static void main(String[] args) {
 		try {
@@ -70,7 +76,7 @@ public class Interface extends JFrame {
 		setTitle("CCEDE");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 450);
+		setBounds(250, 20, 800, 750);
 		contentPane = new panelComponent(); //Componente onde está a imagem de background da calduladora
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -91,16 +97,16 @@ public class Interface extends JFrame {
 		lblCalculadoraDe.setForeground(Color.WHITE);
 		contentPane.add(lblCalculadoraDe);
 		
-		JLabel lblNewLabel = new JLabel("Select 1\n");
+		JLabel lblNewLabel = new JLabel("Tipo de ação:\n");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(150, 120, 100, 25);
 		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 12));
 		lblNewLabel.setForeground(Color.WHITE);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabe2 = new JLabel("Select 2\n");
+		JLabel lblNewLabe2 = new JLabel("Categoria da ação:\n");
 		lblNewLabe2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabe2.setBounds(300, 120, 100, 25);
+		lblNewLabe2.setBounds(295, 120, 110, 25);
 		lblNewLabe2.setFont(new Font("Roboto", Font.PLAIN, 12));
 		lblNewLabe2.setForeground(Color.WHITE);
 		contentPane.add(lblNewLabe2);
@@ -112,13 +118,23 @@ public class Interface extends JFrame {
 		lblNewLabe3.setForeground(Color.WHITE);
 		contentPane.add(lblNewLabe3);		
 		
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.setBounds(150, 150, 100, 25);
 		contentPane.add(comboBox);
-		
-		comboBox_1 = new JComboBox();
+		comboBox.addItem("");
+		comboBox.addItem("Momento");
+		comboBox.addItem("Normal");
+		comboBox.addItem("Cortante");
+
+		comboBox_1 = new JComboBox<String>();
 		comboBox_1.setBounds(300, 150, 100, 25);
 		contentPane.add(comboBox_1);
+		comboBox_1.addItem("");
+		comboBox_1.addItem("Peso Próprio");
+		comboBox_1.addItem("Retração");
+		comboBox_1.addItem("Sobrecarga");
+		comboBox_1.addItem("Temperatura");
+		comboBox_1.addItem("Vento");
 		
 		magnitude = new JTextField();
 		magnitude.setBackground(SystemColor.control);
@@ -127,6 +143,42 @@ public class Interface extends JFrame {
 		magnitude.setColumns(10);
 		
 		JButton btnNewButton = new JButton("+\r\n");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+				contadorDeAcoes = contadorDeAcoes + 1;// Add ação
+				//Preparação dos dados para impressão no painel
+				String tipoAcao = (String) comboBox.getSelectedItem(); 
+				String categAcao = (String) comboBox_1.getSelectedItem();
+				double mgntd = Double.parseDouble(magnitude.getText());
+				
+				String texto = "---------------------------------------------- \n Ação: " + contadorDeAcoes + "\n\n" 
+						+ " - Tipo de ação: " + tipoAcao + "\n\n" 
+						+ " - Categoria da ação: " + categAcao + "\n\n"
+						+ " - Grandeza: " + mgntd + "\n\n";
+				
+				//Adicionando ao ArrayList listaA o obj com os dados
+				int mnvA = comboBox.getSelectedIndex();
+				int nomeA = comboBox_1.getSelectedIndex();
+				double valorA = Double.parseDouble(magnitude.getText());
+				novaAcao = new acoes(mnvA, nomeA, valorA);
+				novaAcao.preencher();
+				listaA.add(novaAcao);
+				System.out.println("nova acao: " + novaAcao.getMnv() + "\n " + novaAcao.getNome() + "\n" + novaAcao.getValor());
+				
+				//Recupera oq ja estava escrito antes e adiciona as informações ao painel
+				painelResultados.setText(painelResultados.getText() + "\n" + texto); 
+				//Limpeza dos inputs
+				magnitude.setText("");
+				comboBox.setSelectedIndex(0);
+				comboBox_1.setSelectedIndex(0);
+
+				} catch(Exception erro){
+					contadorDeAcoes = contadorDeAcoes - 1;
+					JOptionPane.showMessageDialog(null, "erro de calculo");
+				}
+			}
+		});
 		btnNewButton.setBounds(600, 150, 45, 25);
 		contentPane.add(btnNewButton);
 		
@@ -134,13 +186,10 @@ public class Interface extends JFrame {
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					//Aqui fica um componente com os códigos do Barbie e Isa
-					//Teste feito a seguir usando valor no campo magnitude:
-				double mgntd = Double.parseDouble(magnitude.getText());
-				double valor = 5*(mgntd)/3;
-				painelResultados.setText(painelResultados.getText() + "\n" + valor); //"Salva/reimprime" oq ja estava escrito antes
-				magnitude.setText("");//Limpa o input
-				System.out.println("valor: " + valor);
+					
+					combinacoes comb = new combinacoes(listaA);
+					painelResultados.setText(painelResultados.getText() + "\n" + comb.getRelatorio()); //"Salva/reimprime" oq ja estava escrito antes
+				
 				} catch(Exception erro){
 					JOptionPane.showMessageDialog(null, "erro de calculo");
 				}
@@ -180,7 +229,7 @@ public class Interface extends JFrame {
 		painelResultados = new TextArea();
 		painelResultados.setFont(new Font("Roboto", Font.PLAIN, 12));
 		painelResultados.setForeground(Color.BLACK);
-		painelResultados.setBounds(10, 301, 764, 100);
+		painelResultados.setBounds(10, 301, 764, 400);
 		contentPane.add(painelResultados);
 	}
 }
