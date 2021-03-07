@@ -25,15 +25,30 @@ public class combinacoes {
 		//lista de normais-variaveis
 		ArrayList<acoes> listaNv = new ArrayList<acoes>(); //Np = normal-permanente
 		acoes acoesV = null;
+		
+		
+		//MOMENTOS
+		
+		//lista de momentos-permanentes
+		ArrayList<acoes> listaMp = new ArrayList<acoes>(); //Mp = momento-permanente
+		acoes acoesMp = null;
 				
-		/*//CORTANTES
+		//lista de momentos-variaveis
+		ArrayList<acoes> listaMv = new ArrayList<acoes>(); //Mp = momento-permanente
+		acoes acoesMv = null;
+				
+		
+		//CORTANTES
+		
 		//lista de normais-permanentes
-		ArrayList<acoes> listaVp = new ArrayList<acoes>(); //Np = normal-permanente
-		acoes acoes = null;
+		ArrayList<acoes> listaVp = new ArrayList<acoes>();
+		acoes acoesVp = null;
 				
 		//lista de normais-variaveis
-		ArrayList<acoes> listaNv = new ArrayList<acoes>(); //Np = normal-permanente
-		acoes acoesV = null;*/
+		ArrayList<acoes> listaVv = new ArrayList<acoes>();
+		acoes acoesVv = null;
+		
+				
 		
 		
 		int nomeA;
@@ -401,9 +416,331 @@ for (int n=0; n < listaA.size(); n++) {
 	
 		}
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//A seguir, de maneira semelhante ao momento e normal, o código para a combinação 
+//de cortantes está descrito. Porém, não é do escopo das situações em análise, utilizar as combinações de cortantes.
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------------------------------------------------------------------//
+//CORTANTES - PARTE PERMANENTE
+
+//varrendo a lista A e separando tudo o que tem momento permanente
+for (int j=0; j < listaA.size(); j++) {
+	
+	acoes verAcoes = listaA.get(j);
+	int mnv_aux;
+	mnv_aux = verAcoes.getMnv();
+	int tipo_aux; // 1-permanente // 2-variavel //
+	tipo_aux = verAcoes.getTipo();
+	
+	if(mnv_aux == 3 && tipo_aux == 1) {
+		
+		int nome_aux = verAcoes.getNome();
+		double valor_aux = verAcoes.getValor();
+		
+		acoesVp = new acoes(mnv_aux,nome_aux,valor_aux);
+		acoesVp.preencher();
+		listaVp.add(acoesVp);
+		
+		}
+		
+	}
+
+//varrendo a lista Mp e calculaVdo o valor final da soma das parcelas de CORTANTES permanentes multiplicadas pelos seus gamas
+double VdPermTot=0.0;
+double valor_aux3=0.0;
+double gama_aux3=0.0; // 1-permanente // 2-variavel //
+String nome3=null;
+
+for (int j=0; j < listaVp.size(); j++) {
+	
+	//acessaVdo o objeto da lista de CORTANTES permanentes
+	acoesVp = listaVp.get(j);
+	
+	//pegaVdo variaveis
+	valor_aux3 = acoesVp.getValor();	
+	gama_aux3 = acoesVp.getGama();
+	
+	
+	double VdPermParcial = acoesVp.CalculoVdpermanente(gama_aux3, valor_aux3);
+	VdPermTot = VdPermTot + VdPermParcial;
+	System.out.println("---------------------------------------------------------");
+	acoesVp.imprimeVdpermanente(valor_aux3, gama_aux3);
+	System.out.println("---------------------------------------------------------");
+	textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+			+ acoesVp.imprimeVdpermanente(valor_aux3, gama_aux3) 
+			+ "\n---------------------------------------------------------\n";
+		}
+
+//imprimindo a lista Vp somente para verificação da separação anterior
+
+for(int i=0; i < listaVp.size(); i++) {
+	acoesVp = listaVp.get(i);
+	System.out.println("//////////////////////////////////////"); 
+	System.out.println("Lista de CORTANTES permanentes"); 		
+	acoesVp.relatorio();
+	System.out.println("//////////////////////////////////////"); 
+	textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+			+ "\n//////////////////////////////////////\n"
+			+ "Lista de CORTANTES permanentes"
+			+ "\n//////////////////////////////////////\n";	
+}
+		
+//CHECKPOINT//
+System.out.println("---------------------------------------------------------");
+System.out.println("Vd permanente total:"+ VdPermTot); 
+System.out.println("---------------------------------------------------------");
+textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+	+ "Vd permanente total:"+ VdPermTot
+	+ "\n---------------------------------------------------------\n";
 
 
+//CORTANTES - PARTE VARIAVEL
 
+//varreVdo a lista A e separaVdo tudo o que tem momento variável
+
+for (int j=0; j < listaA.size(); j++) {
+		
+	acoes verAcoes = listaA.get(j);
+	int mnv_aux;
+	mnv_aux = verAcoes.getMnv();
+	int tipo_aux; // 1-permanente // 2-variavel //
+	tipo_aux = verAcoes.getTipo();
+	
+	if(mnv_aux == 3 && tipo_aux == 2) {
+		
+		int nome_aux = verAcoes.getNome();
+		double valor_aux = verAcoes.getValor();
+		
+		acoesVv = new acoes(mnv_aux,nome_aux,valor_aux);
+		acoesVv.preencher();
+		listaVv.add(acoesVv);
+		
+		}
+		
+	}
+
+//imprimiVdo a lista Mv somente para verificação da separação anterior
+
+for(int i=0; i < listaVv.size(); i++) {
+	acoesVv = listaVv.get(i);
+	
+	
+	acoesVv.relatorio();
+	
+}
+
+
+//varreVdo a lista Mv e calculaVdo o valor final da soma das parcelas de CORTANTES variaveis multiplicadas pelos seus gamas e phi's
+double VdVariavTot=0.0;
+
+for (int j=0; j < listaVv.size(); j++) {
+	
+	//acessaVdo o objeto da lista de CORTANTES variaveis
+	acoesVv = listaVv.get(j);
+	
+	
+	//pegaVdo variaveis para realizar os caclulos
+	double valor_aux;
+	valor_aux = acoesVv.getValor();
+	double gama_aux; // 1-permanente // 2-variavel //
+	gama_aux = acoesVv.getGama();
+	int nome_aux = acoesVv.getNome();
+	
+	double VdVariavParcial = 0.0;
+	
+	VdVariavParcial = acoesVv.CalculoVdvariavelPermanente(gama_aux, valor_aux);
+	VdVariavTot = 0.0;
+	VdVariavTot = VdVariavTot + VdVariavParcial;
+	
+	System.out.println("---------------------------------------------------------");
+	acoesVv.imprimeVdpermanente(valor_aux, gama_aux);
+	System.out.println("---------------------------------------------------------");
+	textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+			+ acoesVv.imprimeVdpermanente(valor_aux, gama_aux)
+			+ "\n---------------------------------------------------------\n";
+	
+	//CHECKPOINT//
+	System.out.println("-------------------------------------------------------------------------------");
+	System.out.println("A parcela variavel que se comporta como principal eh " + VdVariavParcial );
+	System.out.println("-------------------------------------------------------------------------------");
+	textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+			+ "A parcela variavel que se comporta como principal eh " + VdVariavParcial 
+			+ "\n---------------------------------------------------------\n";
+	
+	if(j>0) {
+	for(int k=0; k<j; k++) {
+		
+		acoesVv = listaVv.get(k);
+		double valor2_aux;
+		valor2_aux = acoesVv.getValor();
+		double gama2_aux; // 1-permanente // 2-variavel //
+		gama2_aux = acoesVv.getGama();
+		double phi2_aux; // 1-permanente // 2-variavel //
+		phi2_aux = acoesVv.getPhi();
+		
+		VdVariavParcial = 0.0;
+		
+		VdVariavParcial = acoesVv.CalculoVdvariavel(gama2_aux, valor2_aux, phi2_aux);
+		
+		
+		System.out.println("---------------------------------------------------------");
+		acoesVv.imprimeVdvariavel(valor2_aux, gama2_aux, phi2_aux);
+		System.out.println("---------------------------------------------------------");
+		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+				+ acoesVv.imprimeVdvariavel(valor2_aux, gama2_aux, phi2_aux)
+				+ "\n---------------------------------------------------------\n";
+		
+		//CHECKPOINT//
+		System.out.println("-------------------------------------------------------------------------------");
+		System.out.println("As parcelas antes da considerada como principal. loop: " + k  + "- " + VdVariavParcial );
+		System.out.println("-------------------------------------------------------------------------------");
+		textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+				+ "As parcelas antes da considerada como principal. loop: " + k  + "- " + VdVariavParcial 
+				+ "\n---------------------------------------------------------\n";
+		
+		VdVariavTot = VdVariavTot + VdVariavParcial;
+		
+	}
+	}
+	
+	if(j<(listaVv.size()-1)) {
+for(int l=(j+1); l<listaVv.size(); l++) {
+		
+		acoesVv = listaVv.get(l);
+		double valor2_aux;
+		valor2_aux = acoesVv.getValor();
+		double gama2_aux; // 1-permanente // 2-variavel //
+		gama2_aux = acoesVv.getGama();
+		double phi2_aux; // 1-permanente // 2-variavel //
+		phi2_aux = acoesVv.getPhi();
+		
+		VdVariavParcial = 0.0;
+		VdVariavParcial = acoesVv.CalculoVdvariavel(gama2_aux, valor2_aux, phi2_aux);
+		
+		System.out.println("---------------------------------------------------------");
+		acoesVv.imprimeVdvariavel(valor2_aux, gama2_aux, phi2_aux);
+		System.out.println("---------------------------------------------------------");
+		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+				+ acoesVv.imprimeVdvariavel(valor2_aux, gama2_aux, phi2_aux)
+				+ "\n---------------------------------------------------------\n";
+		
+		//CHECKPOINT
+		System.out.println("-------------------------------------------------------------------------------");
+		System.out.println("As parcelas depois da considerada como principal. loop: " + l + "- "  + VdVariavParcial );
+		System.out.println("-------------------------------------------------------------------------------");
+		textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+				+ "As parcelas depois da considerada como principal. loop: " + l + "- "  + VdVariavParcial
+				+ "\n---------------------------------------------------------\n";
+		VdVariavTot = VdVariavTot + VdVariavParcial;
+		
+	}
+	}
+
+	
+	
+if(nome_aux == 1) {
+	nome3 = "Peso proprio";
+}
+
+if(nome_aux == 2) {
+	nome3 = "Retracao";
+}
+
+if(nome_aux == 3) {
+	nome3 = "Sobrecarga";
+}
+
+if(nome_aux == 4) {
+	nome3 = "Temperatura";
+}
+
+if(nome_aux == 5) {
+	nome3 = "Vento";
+}
+
+	
+double Vdtotal = 0.0; 
+Vdtotal = VdVariavTot + VdPermTot;
+
+
+//CHECKPOINT
+System.out.println("A Vd para" + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal );
+
+//calculaVdo o Vd para os casos em que a variavel principal não tem normal na direcao
+
+
+for (int n=0; n < listaA.size(); n++) {
+	
+	
+	buscaVariaveis = listaA.get(n);
+	
+	int nome3_aux = buscaVariaveis.getNome();
+	int tipo3_aux;
+	tipo3_aux = buscaVariaveis.getTipo();
+	int mnv3_aux;
+	mnv3_aux = buscaVariaveis.getMnv();
+	
+	if(tipo3_aux == 2 && mnv3_aux != 3)
+		
+	{	
+		double valor_auxiliar = 0;
+		double gama_auxiliar = 0;
+	    double phi_auxiliar = 0;
+	    
+		for (int t=0; t<listaVv.size();t++) {
+		listaVv.get(t);
+		
+		valor_auxiliar = acoesVv.getValor();
+		gama_auxiliar = acoesVv.getGama();
+	    phi_auxiliar = acoesVv.getPhi();
+			
+	    
+	    if(nome3_aux == 1) {
+	    	nome3 = "Peso proprio";
+	    }
+
+	    if(nome3_aux == 2) {
+	    	nome3 = "Retracao";
+	    }
+
+	    if(nome3_aux == 3) {
+	    	nome3 = "Sobrecarga";
+	    }
+
+	    if(nome3_aux == 4) {
+	    	nome3 = "Temperatura";
+	    }
+
+	    if(nome3_aux == 5) {
+	    	nome3 = "Vento";
+	    }
+
+	    
+	    System.out.println("---------------------------------------------------------");
+		buscaVariaveis.imprimeVdvariavel(valor_auxiliar, gama_auxiliar, phi_auxiliar);
+		System.out.println("---------------------------------------------------------");
+		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+				+ buscaVariaveis.imprimeVdvariavel(valor_auxiliar, gama_auxiliar, phi_auxiliar)
+				+ "\n---------------------------------------------------------\n";
+	    
+	    double Vdtotal2 = VdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+	    System.out.println("A Vd para" + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal2 );
+	    textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+	    			+ "A Vd para" + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal2
+	    			+ "\n---------------------------------------------------------\n";
+		}
+		
+		
+		
+		
+	    }
+		
+		}
+	
+		}
 
 		
 	

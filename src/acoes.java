@@ -215,6 +215,29 @@ public double CalculoNdvariavel(double gama, double valor, double phi){
 		return texto;
 	}
 	
+	public String imprimeMdvariavel(double valor, double gama, double phi){ 
+		String texto = valor + "*" + gama + "*" + phi;
+		System.out.println(texto);
+		return texto;
+	}
+	
+	public String imprimeMdpermanente( double valor, double gama){ 
+		String texto = valor + "*" + gama;
+		System.out.println(texto);
+		return texto;
+	}
+	
+	public String imprimeVdvariavel(double valor, double gama, double phi){
+		String texto = valor + "*" + gama + "*" + phi;
+		System.out.println(texto);
+		return(texto);
+	}
+	
+	public String imprimeVdpermanente( double valor, double gama){
+		String texto = valor + "*" + gama;
+		System.out.println(texto);
+		return texto;
+	}
 
 
 
