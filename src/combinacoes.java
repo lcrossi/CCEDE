@@ -160,8 +160,8 @@ for (int j=0; j < listaNp.size(); j++) {
 	System.out.println("---------------------------------------------------------");
 	acoesN.imprimeNdpermanente(valor_aux1, gama_aux1);
 	System.out.println("---------------------------------------------------------");
-	textoFinal = textoFinal + acoesN.imprimeNdpermanente(valor_aux1, gama_aux1) + 
-			"\n---------------------------------------------------------\n";
+	/*textoFinal = textoFinal + acoesN.imprimeNdpermanente(valor_aux1, gama_aux1) + 
+			"\n---------------------------------------------------------\n";*/
 		}
 		
 //CHECKPOINT//
@@ -232,16 +232,16 @@ for (int j=0; j < listaNv.size(); j++) {
 	System.out.println("---------------------------------------------------------");
 	acoesV.imprimeNdpermanente(valor_aux, gama_aux);
 	System.out.println("---------------------------------------------------------");
-	textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+	/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 		+ acoesV.imprimeNdpermanente(valor_aux, gama_aux) + 
-		"\n---------------------------------------------------------\n";
+		"\n---------------------------------------------------------\n";*/
 			
 	//CHECKPOINT//
 	System.out.println("-------------------------------------------------------------------------------");
 	System.out.println("A parcela variavel que se comporta como principal eh " + NdVariavParcial );
 	System.out.println("-------------------------------------------------------------------------------");
 	textoFinal = textoFinal + "\n-------------------------------------------------------------------------------\n" 
-			+ "A parcela variavel que se comporta como principal eh " + NdVariavParcial 
+			+ "A parcela variavel que se comporta como principal é " + NdVariavParcial 
 			+ "\n-------------------------------------------------------------------------------\n";
 	
 	if(j>0) {
@@ -263,18 +263,18 @@ for (int j=0; j < listaNv.size(); j++) {
 		System.out.println("---------------------------------------------------------");
 		acoesV.imprimeNdvariavel(valor2_aux, gama2_aux, phi2_aux);
 		System.out.println("---------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 			+ acoesV.imprimeNdvariavel(valor2_aux, gama2_aux, phi2_aux) 
 			+ "\n---------------------------------------------------------\n";
-		
+		*/
 		//CHECKPOINT//
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("As parcelas antes da considerada como principal. loop: " + k  + "- " + NdVariavParcial );
 		System.out.println("-------------------------------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 				+ "As parcelas antes da considerada como principal. loop: " + k  + "- " 
 				+ NdVariavParcial + "\n---------------------------------------------------------\n";
-		
+		*/
 		NdVariavTot = NdVariavTot + NdVariavParcial;
 		
 	}
@@ -297,19 +297,19 @@ for(int l=(j+1); l<listaNv.size(); l++) {
 		System.out.println("---------------------------------------------------------");
 		acoesV.imprimeNdvariavel(valor2_aux, gama2_aux, phi2_aux);
 		System.out.println("---------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 				+ acoesV.imprimeNdvariavel(valor2_aux, gama2_aux, phi2_aux) 
 				+ "\n---------------------------------------------------------\n";
-		
+		*/
 		//CHECKPOINT
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("As parcelas depois da considerada como principal. loop: " + l + "- "  + NdVariavParcial );
 		System.out.println("-------------------------------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 				+ "As parcelas depois da considerada como principal. loop: " 
 				+ l + "- "  + NdVariavParcial 
 				+ "\n---------------------------------------------------------\n";
-		
+		*/
 		NdVariavTot = NdVariavTot + NdVariavParcial;
 		
 	}
@@ -343,8 +343,8 @@ Ndtotal = NdVariavTot + NdPermTot;
 
 
 //CHECKPOINT
-System.out.println("A Nd para" + nome + " como principal, eh igual a: \n Nd=" + Ndtotal );
-textoFinal = textoFinal + "\nA Nd para" + nome + " como principal, eh igual a: \n Nd=" + Ndtotal;
+System.out.println("A Nd para " + nome + " como principal, eh igual a: \n Nd=" + Ndtotal );
+textoFinal = textoFinal + "\nA Nd para " + nome + " como principal, eh igual a: \n Nd=" + Ndtotal;
 //calculando o Nd para os casos em que a variavel principal não tem normal na direcao
 
 
@@ -398,13 +398,13 @@ for (int n=0; n < listaA.size(); n++) {
 	    System.out.println("---------------------------------------------------------");
 		buscaVariaveis.imprimeNdvariavel(valor_auxiliar, gama_auxiliar, phi_auxiliar);
 		System.out.println("---------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 				+ buscaVariaveis.imprimeNdvariavel(valor_auxiliar, gama_auxiliar, phi_auxiliar) 
 				+ "\n---------------------------------------------------------\n";
-	    
+	    */
 	    double Ndtotal2 = NdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
-	    System.out.println("A Nd para" + nome3_aux + " como principal, eh igual a: \n Nd=" + Ndtotal2 );
-	    textoFinal = textoFinal + "\nA Nd para" + nome3_aux + " como principal, eh igual a: \n Nd=" + Ndtotal2;
+	    System.out.println("A Nd para " + nome3_aux + " como principal, eh igual a: \n Nd=" + Ndtotal2 );
+	    //textoFinal = textoFinal + "\nA Nd para " + nome3_aux + " como principal, eh igual a: \n Nd=" + Ndtotal2;
 		}
 		
 		
@@ -469,9 +469,9 @@ for (int j=0; j < listaVp.size(); j++) {
 	System.out.println("---------------------------------------------------------");
 	acoesVp.imprimeVdpermanente(valor_aux3, gama_aux3);
 	System.out.println("---------------------------------------------------------");
-	textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+	/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 			+ acoesVp.imprimeVdpermanente(valor_aux3, gama_aux3) 
-			+ "\n---------------------------------------------------------\n";
+			+ "\n---------------------------------------------------------\n";*/
 		}
 
 //imprimindo a lista Vp somente para verificação da separação anterior
@@ -482,10 +482,10 @@ for(int i=0; i < listaVp.size(); i++) {
 	System.out.println("Lista de CORTANTES permanentes"); 		
 	acoesVp.relatorio();
 	System.out.println("//////////////////////////////////////"); 
-	textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+	/*textoFinal = textoFinal + "\n---------------------------------------------------------\n"
 			+ "\n//////////////////////////////////////\n"
 			+ "Lista de CORTANTES permanentes"
-			+ "\n//////////////////////////////////////\n";	
+			+ "\n//////////////////////////////////////\n";	*/
 }
 		
 //CHECKPOINT//
@@ -558,10 +558,10 @@ for (int j=0; j < listaVv.size(); j++) {
 	System.out.println("---------------------------------------------------------");
 	acoesVv.imprimeVdpermanente(valor_aux, gama_aux);
 	System.out.println("---------------------------------------------------------");
-	textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+	/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 			+ acoesVv.imprimeVdpermanente(valor_aux, gama_aux)
 			+ "\n---------------------------------------------------------\n";
-	
+	*/
 	//CHECKPOINT//
 	System.out.println("-------------------------------------------------------------------------------");
 	System.out.println("A parcela variavel que se comporta como principal eh " + VdVariavParcial );
@@ -589,18 +589,18 @@ for (int j=0; j < listaVv.size(); j++) {
 		System.out.println("---------------------------------------------------------");
 		acoesVv.imprimeVdvariavel(valor2_aux, gama2_aux, phi2_aux);
 		System.out.println("---------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 				+ acoesVv.imprimeVdvariavel(valor2_aux, gama2_aux, phi2_aux)
 				+ "\n---------------------------------------------------------\n";
-		
+		*/
 		//CHECKPOINT//
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("As parcelas antes da considerada como principal. loop: " + k  + "- " + VdVariavParcial );
 		System.out.println("-------------------------------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n"
 				+ "As parcelas antes da considerada como principal. loop: " + k  + "- " + VdVariavParcial 
 				+ "\n---------------------------------------------------------\n";
-		
+		*/
 		VdVariavTot = VdVariavTot + VdVariavParcial;
 		
 	}
@@ -623,17 +623,17 @@ for(int l=(j+1); l<listaVv.size(); l++) {
 		System.out.println("---------------------------------------------------------");
 		acoesVv.imprimeVdvariavel(valor2_aux, gama2_aux, phi2_aux);
 		System.out.println("---------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 				+ acoesVv.imprimeVdvariavel(valor2_aux, gama2_aux, phi2_aux)
 				+ "\n---------------------------------------------------------\n";
-		
+		*/
 		//CHECKPOINT
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("As parcelas depois da considerada como principal. loop: " + l + "- "  + VdVariavParcial );
 		System.out.println("-------------------------------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n"
 				+ "As parcelas depois da considerada como principal. loop: " + l + "- "  + VdVariavParcial
-				+ "\n---------------------------------------------------------\n";
+				+ "\n---------------------------------------------------------\n";*/
 		VdVariavTot = VdVariavTot + VdVariavParcial;
 		
 	}
@@ -667,7 +667,10 @@ Vdtotal = VdVariavTot + VdPermTot;
 
 
 //CHECKPOINT
-System.out.println("A Vd para" + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal );
+System.out.println("A Vd para " + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal );
+textoFinal = textoFinal + "\n---------------------------------------------------------\n"
+		+ "A Vd para " + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal
+		+ "\n---------------------------------------------------------\n";
 
 //calculaVdo o Vd para os casos em que a variavel principal não tem normal na direcao
 
@@ -722,18 +725,16 @@ for (int n=0; n < listaA.size(); n++) {
 	    System.out.println("---------------------------------------------------------");
 		buscaVariaveis.imprimeVdvariavel(valor_auxiliar, gama_auxiliar, phi_auxiliar);
 		System.out.println("---------------------------------------------------------");
-		textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
+		/*textoFinal = textoFinal + "\n---------------------------------------------------------\n" 
 				+ buscaVariaveis.imprimeVdvariavel(valor_auxiliar, gama_auxiliar, phi_auxiliar)
 				+ "\n---------------------------------------------------------\n";
-	    
+	    */
 	    double Vdtotal2 = VdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
-	    System.out.println("A Vd para" + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal2 );
+	    System.out.println("A Vd para " + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal2 );
 	    textoFinal = textoFinal + "\n---------------------------------------------------------\n"
-	    			+ "A Vd para" + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal2
+	    			+ "A Vd para " + nome3 + " como principal, eh igual a: \n Vd=" + Vdtotal2
 	    			+ "\n---------------------------------------------------------\n";
 		}
-		
-		
 		
 		
 	    }
