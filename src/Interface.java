@@ -47,7 +47,6 @@ public class Interface extends JFrame {
 	
 	ArrayList<acoes> listaA = new ArrayList<acoes>(); //Lista com as seções de ação
 	acoes novaAcao = null;
-	acoes buscaVariaveis = null;
 	
 	public static void main(String[] args) {
 		try {

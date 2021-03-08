@@ -8,12 +8,15 @@ public class acoes {
     int tipo; // 1-permanente // 2-variavel //
     double phi; 
     double gama;
-    double NdPermParcial;
+    double Permanente;
+    double Variavel;
+    
+    /*double NdPermParcial;
     double NdVarParcial;
     double MdPermParcial;
     double MdVarParcial;
     double VdPermParcial;
-    double VdVarParcial;
+    double VdVarParcial;*/
     
     
     /* Constructor */
@@ -136,7 +139,25 @@ public class acoes {
    
  //metodos de calculo 
    
+   public double CalculoPermanente(double gama, double valor){
+		 
+		
+		 this.Permanente = gama*valor;
+		 	
+		 
+		 return Permanente;
+	 }
    
+   public double CalculoVariavel(double gama, double valor, double phi){
+		 
+		
+		 this.Variavel = gama*valor*phi;
+		 	
+		 
+		 return Variavel;
+	 }
+   
+  /* 
  //NORMAIS
 	 
 	 public double CalculoNdpermanente(double gama, double valor){
@@ -203,42 +224,30 @@ public double CalculoNdvariavel(double gama, double valor, double phi){
 	 	
  //Memorial de Calculo
 	
-	public String imprimeNdvariavel(double valor, double gama, double phi){
-		String texto = valor + "*" + gama + "*" + phi;
-		System.out.println(texto);
-		return(texto);
+	public void imprimeNdvariavel(double valor, double gama, double phi){ 
+		System.out.println( valor + "*" + gama + "*" + phi );
 	}
 	
-	public String imprimeNdpermanente( double valor, double gama){
-		String texto = valor + "*" + gama;
-		System.out.println(texto);
-		return texto;
+	public void imprimeNdpermanente( double valor, double gama){ 
+		System.out.println(  valor + "*" + gama );
 	}
 	
-	public String imprimeMdvariavel(double valor, double gama, double phi){ 
-		String texto = valor + "*" + gama + "*" + phi;
-		System.out.println(texto);
-		return texto;
+
+	public void imprimeMdvariavel(double valor, double gama, double phi){ 
+		System.out.println( valor + "*" + gama + "*" + phi );
 	}
 	
-	public String imprimeMdpermanente( double valor, double gama){ 
-		String texto = valor + "*" + gama;
-		System.out.println(texto);
-		return texto;
-	}
-	
-	public String imprimeVdvariavel(double valor, double gama, double phi){
-		String texto = valor + "*" + gama + "*" + phi;
-		System.out.println(texto);
-		return(texto);
-	}
-	
-	public String imprimeVdpermanente( double valor, double gama){
-		String texto = valor + "*" + gama;
-		System.out.println(texto);
-		return texto;
+	public void imprimeMdpermanente( double valor, double gama){ 
+		System.out.println(  valor + "*" + gama );
 	}
 
+	public void imprimeVdvariavel(double valor, double gama, double phi){ 
+		System.out.println( valor + "*" + gama + "*" + phi );
+	}
+	
+	public void imprimeVdpermanente( double valor, double gama){ 
+		System.out.println(  valor + "*" + gama );
+	}
 
 
 //CORTANTES
@@ -269,7 +278,7 @@ if(this.mnv == 3 && this.tipo == 2  ) {
 }		
 	 
 	 return VdVarParcial;
-}
+}*/
 
 }
 
