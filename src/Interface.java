@@ -1,6 +1,15 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Canvas;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.Panel;
+import java.awt.Label;
+import java.awt.TextArea;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,23 +18,25 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
-
-import java.awt.Canvas;
 import javax.swing.DropMode;
 import javax.swing.JComboBox;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.Color;
-import java.awt.SystemColor;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Panel;
-import java.awt.Label;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JButton;
-import java.awt.TextArea;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import java.util.ArrayList;
 
 public class Interface extends JFrame {
 
@@ -199,36 +210,76 @@ public class Interface extends JFrame {
 		btnCalcular.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(btnCalcular);
 		
-		JLabel lblCenrioDeMaior = new JLabel("Cen\u00E1rio de maior risco");
-		lblCenrioDeMaior.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCenrioDeMaior.setFont(new Font("Roboto", Font.PLAIN, 12));
-		lblCenrioDeMaior.setBounds(10, 264, 150, 25);
-		lblCenrioDeMaior.setForeground(Color.WHITE);
-		contentPane.add(lblCenrioDeMaior);
-		
-		maiorRisco = new JTextField();
-		maiorRisco.setBackground(SystemColor.control);
-		maiorRisco.setBounds(171, 264, 80, 25);
-		contentPane.add(maiorRisco);
-		maiorRisco.setColumns(10);
-		
-		JLabel lblCenrioDeMenor = new JLabel("Cen\u00E1rio de menor risco");
-		lblCenrioDeMenor.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCenrioDeMenor.setFont(new Font("Roboto", Font.PLAIN, 12));
-		lblCenrioDeMenor.setBounds(446, 264, 150, 25);
-		lblCenrioDeMenor.setForeground(Color.WHITE);
-		contentPane.add(lblCenrioDeMenor);
-		
-		menorRisco = new JTextField();
-		menorRisco.setColumns(10);
-		menorRisco.setBackground(SystemColor.menu);
-		menorRisco.setBounds(607, 264, 80, 25);
-		contentPane.add(menorRisco);
-		
 		painelResultados = new TextArea();
 		painelResultados.setFont(new Font("Roboto", Font.PLAIN, 12));
 		painelResultados.setForeground(Color.BLACK);
 		painelResultados.setBounds(10, 301, 764, 400);
 		contentPane.add(painelResultados);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(600, 250, 55, 21);
+		contentPane.add(menuBar);
+		
+		JMenu mnFile = new JMenu("Salvar");
+		menuBar.add(mnFile);
+		
+		JMenuItem mntmAbrir = new JMenuItem("Abrir");
+		mntmAbrir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser abrir = new JFileChooser();
+				abrir.setDialogTitle("Abrir arquivo");
+				abrir.setCurrentDirectory(new File("."));
+				int result = abrir.showOpenDialog(null);
+				
+				File file = null;
+				if(result == JFileChooser.APPROVE_OPTION){
+					
+				file = abrir.getSelectedFile();
+				try{
+					Path path = Paths.get(file.getAbsolutePath());
+					String retorno = new String(Files.readAllBytes(path));
+					painelResultados.setText(retorno);
+				}catch(Exception erro){
+					JOptionPane.showInputDialog(this, "arquivo não carregado");
+				}
+				}
+			}
+		});
+		mnFile.add(mntmAbrir);
+		
+		JMenuItem mntmSalvar = new JMenuItem("Salvar");
+		mntmSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					String texto = painelResultados.getText();
+										
+				JFileChooser salvar= new JFileChooser();
+					salvar.setDialogTitle("Salvar Arquivo");
+					salvar.setCurrentDirectory(new File ("."));
+					int select = salvar.showSaveDialog(null);
+					if(select == JFileChooser.APPROVE_OPTION){
+						File arquivo = salvar.getSelectedFile();
+						try {
+							PrintWriter pw = new PrintWriter(arquivo);
+							pw.write(texto);
+							pw.close();
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}
+						
+					}
+				
+				}
+		});
+		mnFile.add(mntmSalvar);
+		
+		JMenuItem mntmSair = new JMenuItem("Sair");
+		mntmSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		mnFile.add(mntmSair);
+		
+		
 	}
 }

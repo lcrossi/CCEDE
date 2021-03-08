@@ -539,7 +539,7 @@ public class combinacoes {
 									textoFinal = textoFinal + "\n\nA Vd para " + nome + " como principal, eh igual a: \n Vd= " + Vdtotal;
 							}
 		
-					    /*E se você acha que acabou o cálculo da Md você está muito enganado(a). Mesmo quando não temos momentoss para uma ação considerada como principal, podemos
+					    /*E se você acha que acabou o cálculo da Md você está muito enganado(a). Mesmo quando não temos momentos para uma ação considerada como principal, podemos
 						calcular a Md para aquela acao variável considerada como principal, o único porém é que todas as variáveis considerarão o phi em suas multiplicações*/
 						
 						//Varrendo toda a listaA para ver se tenho alguma ação variável que não possui normal, momento ou cortante

@@ -10,14 +10,7 @@ public class acoes {
     double gama;
     double Permanente;
     double Variavel;
-    
-    /*double NdPermParcial;
-    double NdVarParcial;
-    double MdPermParcial;
-    double MdVarParcial;
-    double VdPermParcial;
-    double VdVarParcial;*/
-    
+
     
     /* Constructor */
     
@@ -156,129 +149,6 @@ public class acoes {
 		 
 		 return Variavel;
 	 }
-   
-  /* 
- //NORMAIS
-	 
-	 public double CalculoNdpermanente(double gama, double valor){
-		 
-		 if(this.mnv == 2 && this.tipo == 1) {
-			 this.NdPermParcial = gama*valor;
-		 }	
-		 
-		 return NdPermParcial;
-	 }
-	 
- public double CalculoNdvariavelPermanente(double gama, double valor){
-		 
-		 if(this.mnv == 2 && this.tipo == 2) {
-			 this.NdPermParcial = gama*valor;
-		 }	
-		 
-		 return NdPermParcial;
-	 }
-	 
-public double CalculoNdvariavel(double gama, double valor, double phi){
-		 
-	 if(this.mnv == 2 && this.tipo == 2  ) {
-		 this.NdVarParcial = (this.gama)*(this.valor)*(this.phi);
-	 }		
-		 
-		 return NdVarParcial;
-	 }
-	 
-
-	 
-	 	
-	 	
-//MOMENTOS
-
-	 	
-	 	 public double CalculoMdpermanente(double gama, double valor){
-			 
-			 if(this.mnv == 1 && this.tipo == 1) {
-				 this.MdPermParcial = gama*valor;
-			 }	
-			 
-			 return MdPermParcial;
-		 }
-		 
-	 public double CalculoMdvariavelPermanente(double gama, double valor){
-			 
-			 if(this.mnv == 1 && this.tipo == 2) {
-				 this.MdPermParcial = gama*valor;
-			 }	
-			 
-			 return MdPermParcial;
-		 }
-		 
-	public double CalculoMdvariavel(double gama, double valor, double phi){
-			 
-		 if(this.mnv == 1 && this.tipo == 2  ) {
-			 this.MdVarParcial = (this.gama)*(this.valor)*(this.phi);
-		 }		
-			 
-			 return MdVarParcial;
-		 }
-	 	
-	 	
- //Memorial de Calculo
-	
-	public void imprimeNdvariavel(double valor, double gama, double phi){ 
-		System.out.println( valor + "*" + gama + "*" + phi );
-	}
-	
-	public void imprimeNdpermanente( double valor, double gama){ 
-		System.out.println(  valor + "*" + gama );
-	}
-	
-
-	public void imprimeMdvariavel(double valor, double gama, double phi){ 
-		System.out.println( valor + "*" + gama + "*" + phi );
-	}
-	
-	public void imprimeMdpermanente( double valor, double gama){ 
-		System.out.println(  valor + "*" + gama );
-	}
-
-	public void imprimeVdvariavel(double valor, double gama, double phi){ 
-		System.out.println( valor + "*" + gama + "*" + phi );
-	}
-	
-	public void imprimeVdpermanente( double valor, double gama){ 
-		System.out.println(  valor + "*" + gama );
-	}
-
-
-//CORTANTES
-
-	
- public double CalculoVdpermanente(double gama, double valor){
-	 
-	 if(this.mnv == 3 && this.tipo == 1) {
-		 this.VdPermParcial = gama*valor;
-	 }	
-	 
-	 return MdPermParcial;
-}
-
-public double CalculoVdvariavelPermanente(double gama, double valor){
-	 
-	 if(this.mnv == 3 && this.tipo == 2) {
-		 this.MdPermParcial = gama*valor;
-	 }	
-	 
-	 return MdPermParcial;
-}
-
-public double CalculoVdvariavel(double gama, double valor, double phi){
-	 
-if(this.mnv == 3 && this.tipo == 2  ) {
-	 this.VdVarParcial = (this.gama)*(this.valor)*(this.phi);
-}		
-	 
-	 return VdVarParcial;
-}*/
 
 }
 
