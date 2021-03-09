@@ -633,14 +633,14 @@ public class combinacoes {
 											    
 						
 											    //atribuindo resultado parcial à soma total
-											    Mdtotal2 = MdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+											    double MdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+											    Mdtotal2 = Mdtotal2  + MdParcial;	
 											    
 									    
 										} //fecha o for que varre todas as acoes variaveis
 										
-										
+										Mdtotal2 = Mdtotal2 + MdPermTot ;	
 										System.out.println("A Md para Sobrecarga como principal, eh igual a: \n Md=" + Mdtotal2 );
-										textoFinal = textoFinal + "\n\nA Md para Sobrecarga como principal, eh igual a: \n Md=" + Mdtotal2;
 									}
 									
 									if(n==0) {
@@ -659,14 +659,14 @@ public class combinacoes {
 											    
 						
 											    //atribuindo resultado parcial à soma total
-											    Ndtotal2 = NdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+											    double NdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+											    Ndtotal2 = Ndtotal2  + NdParcial;	
 											    
 									    
 										} //fecha o for que varre todas as acoes variaveis
 										
-										
+										Ndtotal2 = Ndtotal2 + NdPermTot ;			
 										System.out.println("A Nd para Sobrecarga como principal, eh igual a: \n Nd=" + Ndtotal2 );
-										textoFinal = textoFinal + "\n\nA Nd para Sobrecarga como principal, eh igual a: \n Nd=" + Ndtotal2;
 									}
 							
 								
@@ -686,14 +686,14 @@ public class combinacoes {
 											    
 						
 											    //atribuindo resultado parcial à soma total
-											    Vdtotal2 = VdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+											    double VdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+											    Vdtotal2 = Vdtotal2  + VdParcial;	
 											    
 									    
 										} //fecha o for que varre todas as acoes variaveis
 										
-										
+										Vdtotal2 = Vdtotal2 + VdPermTot ;
 										System.out.println("A Vd para Sobrecarga como principal, eh igual a: \n Vd=" + Vdtotal2 );
-										textoFinal = textoFinal + "\n\nA Vd para Sobrecarga como principal, eh igual a: \n Vd=" + Vdtotal2;
 									}
 						
 									
@@ -745,14 +745,14 @@ public class combinacoes {
 												    
 							
 												    //atribuindo resultado parcial à soma total
-												    Mdtotal2 = MdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+												    double MdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+												    Mdtotal2 = Mdtotal2  + MdParcial;	
 												    
 										    
 											} //fecha o for que varre todas as acoes variaveis
 											
-											
+											Mdtotal2 = Mdtotal2 + MdPermTot ;
 											System.out.println("A Md para Temperatura como principal, eh igual a: \n Md=" + Mdtotal2 );
-											textoFinal = textoFinal + "\n\nA Md para Temperatura como principal, eh igual a: \n Md=" + Mdtotal2;
 										}
 										
 										if(n1==0) {
@@ -771,14 +771,14 @@ public class combinacoes {
 												    
 							
 												    //atribuindo resultado parcial à soma total
-												    Ndtotal2 = NdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+												    double NdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+												    Ndtotal2 = Ndtotal2  + NdParcial;	
 												    
 										    
 											} //fecha o for que varre todas as acoes variaveis
 											
-											
+											Ndtotal2 = Ndtotal2 + NdPermTot ;
 											System.out.println("A Nd para temperatura como principal, eh igual a: \n Nd=" + Ndtotal2 );
-											textoFinal = textoFinal + "\n\nA Nd para temperatura como principal, eh igual a: \n Nd=" + Ndtotal2;
 										}
 								
 									
@@ -798,14 +798,14 @@ public class combinacoes {
 												    
 							
 												    //atribuindo resultado parcial à soma total
-												    Vdtotal2 = VdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+												    double VdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+												    Vdtotal2 = Vdtotal2  + VdParcial;	
 												    
 										    
 											} //fecha o for que varre todas as acoes variaveis
 											
-											
+											Vdtotal2 = Vdtotal2 + VdPermTot ;
 											System.out.println("A Vd para temperatura como principal, eh igual a: \n Vd=" + Vdtotal2 );
-											textoFinal = textoFinal + "\n\nA Vd para temperatura como principal, eh igual a: \n Vd=" + Vdtotal2;
 										}
 						
 						
@@ -857,14 +857,14 @@ public class combinacoes {
 													    
 								
 													    //atribuindo resultado parcial à soma total
-													    Mdtotal2 = MdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+													    double MdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+													    Mdtotal2 = Mdtotal2  + MdParcial;	
 													    
 											    
 												} //fecha o for que varre todas as acoes variaveis
 												
-												
+												Mdtotal2 = Mdtotal2 + MdPermTot ;
 												System.out.println("A Md para Vento como principal, eh igual a: \n Md=" + Mdtotal2 );
-												textoFinal = textoFinal + "\n\nA Md para Vento como principal, eh igual a: \n Md=" + Mdtotal2;
 											}
 											
 											if(n2==0) {
@@ -883,14 +883,14 @@ public class combinacoes {
 													    
 								
 													    //atribuindo resultado parcial à soma total
-													    Ndtotal2 = NdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+													    double NdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+													    Ndtotal2 = Ndtotal2  + NdParcial;	
 													    
 											    
 												} //fecha o for que varre todas as acoes variaveis
 												
-												
+												Ndtotal2 = Ndtotal2 + NdPermTot ;
 												System.out.println("A Nd para vento como principal, eh igual a: \n Nd=" + Ndtotal2 );
-												textoFinal = textoFinal + "\n\nA Nd para vento como principal, eh igual a: \n Nd=" + Ndtotal2;
 											}
 									
 										
@@ -910,27 +910,16 @@ public class combinacoes {
 													    
 								
 													    //atribuindo resultado parcial à soma total
-													    Vdtotal2 = VdPermTot + (gama_auxiliar * valor_auxiliar * phi_auxiliar);	
+													    double VdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
+													    Vdtotal2 = Vdtotal2  + VdParcial;	
 													    
 											    
 												} //fecha o for que varre todas as acoes variaveis
 												
-												
+												Vdtotal2 = Vdtotal2 + VdPermTot ;
 												System.out.println("A Vd para vento como principal, eh igual a: \n Vd=" + Vdtotal2 );
-												textoFinal = textoFinal + "\n\nA Vd para vento como principal, eh igual a: \n Vd=" + Vdtotal2;
 											}
-
-
-	}
-	
+		
 }
-	
 
-
-
-
-
-
-	
-
-
+}//fecha classe
