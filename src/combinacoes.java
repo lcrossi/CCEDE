@@ -1,9 +1,8 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 
 public class combinacoes {
 	//String com tudo o que se quer imprimir no painel
-	String textoFinal = "\n\n ----------------------------------------------- \n RELATÓRIO \n ----------------------------------------------- \n";
+	String textoFinal = "\n\n ----------------------------------------------- \n RELATï¿½RIO \n ----------------------------------------------- \n";
 	 
 	public String getRelatorio() {
 		 return textoFinal;
@@ -56,24 +55,17 @@ public class combinacoes {
 		
 		ArrayList<acoes> listaW = new ArrayList<acoes>();
 		acoes vento = null;
-				
-		
-		
-		int nomeA;
-		double valorA;
-		int mnvA;
-		int adicionarMais = 1;
 
-		/*O for a seguir varre a lista de todas as ações (listaA) e separa listas de normais permanentes (listaNp), normais variaveis (listaNv),
-		momentos permanentes (listaMp), momentos variáveis (listaMv), cortantes permanentes (listaVp) e cortantes variáveis (listaVv)*/
+		/*O for a seguir varre a lista de todas as aï¿½ï¿½es (listaA) e separa listas de normais permanentes (listaNp), normais variaveis (listaNv),
+		momentos permanentes (listaMp), momentos variï¿½veis (listaMv), cortantes permanentes (listaVp) e cortantes variï¿½veis (listaVv)*/
 
 		for (int j=0; j < listaA.size(); j++) {
 				
-			//pegar o objeto da listaA na posição de j através do método get inerente ao arraylist
+			//pegar o objeto da listaA na posiï¿½ï¿½o de j atravï¿½s do mï¿½todo get inerente ao arraylist
 			acoes verAcoes = listaA.get(j);
 			
-			/*através de métodos get que retornam os valores das respectivas variáveis se obtém os parâmetros mnv, tipo, nome e 
-			grandeza do objeto na posição j da listaA*/
+			/*atravï¿½s de mï¿½todos get que retornam os valores das respectivas variï¿½veis se obtï¿½m os parï¿½metros mnv, tipo, nome e 
+			grandeza do objeto na posiï¿½ï¿½o j da listaA*/
 			
 			
 			int mnv_aux = verAcoes.getMnv(); // 1-momento // 2-normal // 3-cortante
@@ -81,11 +73,11 @@ public class combinacoes {
 			int nome_aux = verAcoes.getNome();
 			double valor_aux = verAcoes.getValor();
 			
-			/* A sequência de if's a seguir utiliza o parâmetro mnv e tipo para classificar as ações permanentes em listas específicas de normais, momentos e 
+			/* A sequï¿½ncia de if's a seguir utiliza o parï¿½metro mnv e tipo para classificar as aï¿½ï¿½es permanentes em listas especï¿½ficas de normais, momentos e 
 			 cortantes.
 			 */
 			
-				// verificar se a ação em análise é normal e permanente
+				// verificar se a aï¿½ï¿½o em anï¿½lise ï¿½ normal e permanente
 				if(mnv_aux == 2 && tipo_aux == 1) {
 					
 					acoesNp = new acoes(mnv_aux,nome_aux,valor_aux);
@@ -94,7 +86,7 @@ public class combinacoes {
 				
 				}
 				
-				// verificar se a ação em análise é momento e permanente
+				// verificar se a aï¿½ï¿½o em anï¿½lise ï¿½ momento e permanente
 				if(mnv_aux == 1 && tipo_aux == 1) {
 					
 					acoesMp = new acoes(mnv_aux,nome_aux,valor_aux);
@@ -103,7 +95,7 @@ public class combinacoes {
 					
 				}
 				
-				// verificar se a ação em análise é cortante e permanente
+				// verificar se a aï¿½ï¿½o em anï¿½lise ï¿½ cortante e permanente
 				if(mnv_aux == 3 && tipo_aux == 1) {
 					
 					acoesVp = new acoes(mnv_aux,nome_aux,valor_aux);
@@ -112,7 +104,7 @@ public class combinacoes {
 					
 				}
 				
-				// verificar se a ação em análise é normal e variável
+				// verificar se a aï¿½ï¿½o em anï¿½lise ï¿½ normal e variï¿½vel
 				if(mnv_aux == 2 && tipo_aux == 2) {
 					
 					acoesNv = new acoes(mnv_aux,nome_aux,valor_aux);
@@ -121,7 +113,7 @@ public class combinacoes {
 				
 				}
 				
-				// verificar se a ação em análise é momento e variável
+				// verificar se a aï¿½ï¿½o em anï¿½lise ï¿½ momento e variï¿½vel
 				if(mnv_aux == 1 && tipo_aux == 2) {
 					
 					acoesMv = new acoes(mnv_aux,nome_aux,valor_aux);
@@ -130,7 +122,7 @@ public class combinacoes {
 					
 				}
 				
-				// verificar se a ação em análise é cortante e variável
+				// verificar se a aï¿½ï¿½o em anï¿½lise ï¿½ cortante e variï¿½vel
 				if(mnv_aux == 3 && tipo_aux == 2) {
 					
 					acoesVv = new acoes(mnv_aux,nome_aux,valor_aux);
@@ -144,8 +136,8 @@ public class combinacoes {
 		
 		//CALCULO DA PARTE PERMANENTE
 
-		/*Varre-se então os três arraylists de ações permanentes: listaNp, listaMp e listaVp e realiza-se a operação multiplicar, para cada passagem do for, 
-		o gama*valor de cada ação acessada pelo for. Os resultados de todas as repetições do laço são somados em uma variável*/
+		/*Varre-se entï¿½o os trï¿½s arraylists de aï¿½ï¿½es permanentes: listaNp, listaMp e listaVp e realiza-se a operaï¿½ï¿½o multiplicar, para cada passagem do for, 
+		o gama*valor de cada aï¿½ï¿½o acessada pelo for. Os resultados de todas as repetiï¿½ï¿½es do laï¿½o sï¿½o somados em uma variï¿½vel*/
 		
 		//NORMAL
 		double NdPermTot=0.0;
@@ -215,24 +207,24 @@ public class combinacoes {
 	  }	
 		
 		
-	   //CALCULO PARTE VARIÁVEL
+	   //CALCULO PARTE VARIï¿½VEL
 		
-		/*Varre-se então os três arraylists de ações variáveis: listaNv, listaMv e listaVv e realiza-se a operação multiplicar, para cada passagem do for, 
-		o gama*valor, pois a ação variável em análise é considerada como permanente. Dentro do for lê-se as ações variáveis antes e depois da considerada como principal
-		e essas sim realizamos a multiplicação considerando o phi: gama*valor*phi. Soma-se tudo em uma variável e depois acrescenta-se o resultado das somas das permanentes */
+		/*Varre-se entï¿½o os trï¿½s arraylists de aï¿½ï¿½es variï¿½veis: listaNv, listaMv e listaVv e realiza-se a operaï¿½ï¿½o multiplicar, para cada passagem do for, 
+		o gama*valor, pois a aï¿½ï¿½o variï¿½vel em anï¿½lise ï¿½ considerada como permanente. Dentro do for lï¿½-se as aï¿½ï¿½es variï¿½veis antes e depois da considerada como principal
+		e essas sim realizamos a multiplicaï¿½ï¿½o considerando o phi: gama*valor*phi. Soma-se tudo em uma variï¿½vel e depois acrescenta-se o resultado das somas das permanentes */
 		
-		//NORMAIS VARIÁVEIS
+		//NORMAIS VARIï¿½VEIS
 		
 		for (int j=0; j < listaNv.size(); j++) {
 			
-			//acessando o objeto da lista de normais variaveis que se comportará como principal nesta passagem do for
+			//acessando o objeto da lista de normais variaveis que se comportarï¿½ como principal nesta passagem do for
 			acoesNv = listaNv.get(j);
 			
 			
 			//pegando variaveis para realizar os calculos
 			double valor_aux = acoesNv.getValor();
 			double gama_aux = acoesNv.getGama();
-			int nome_aux = acoesNv.getNome(); // É ESSE O NOME QUE VAI SER IMPRESSO NA TELA DIZENDO "CALCULO DE X PARA NOME COMO PRINCIPAL, SÓ USADO NO FINAL"
+			int nome_aux = acoesNv.getNome(); // ï¿½ ESSE O NOME QUE VAI SER IMPRESSO NA TELA DIZENDO "CALCULO DE X PARA NOME COMO PRINCIPAL, Sï¿½ USADO NO FINAL"
 			
 			double NdVariavParcial = 0.0;
 			
@@ -241,24 +233,24 @@ public class combinacoes {
 			NdVariavTot = NdVariavTot + NdVariavParcial;
 			
 			
-				//se houverem acoes variáveis ANTES da acao em análise no for maior (que é considerada a ação variável como principal) acessamos elas através do if+for a seguir
+				//se houverem acoes variï¿½veis ANTES da acao em anï¿½lise no for maior (que ï¿½ considerada a aï¿½ï¿½o variï¿½vel como principal) acessamos elas atravï¿½s do if+for a seguir
 				if(j>0) {
 				
 			
 						for(int k=0; k<j; k++) {
 				
-							//pegando um objeto da lista de normais variáveis (listaNv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
+							//pegando um objeto da lista de normais variï¿½veis (listaNv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
 							acoesNv = listaNv.get(k);
 					
-							//do objeto selecionado pelo for pegam-se as seguintes variáveis
+							//do objeto selecionado pelo for pegam-se as seguintes variï¿½veis
 							double valor2_aux = acoesNv.getValor();
 							double gama2_aux = acoesNv.getGama(); 
 							double phi2_aux = acoesNv.getPhi();
 				
-							//zera-se a NdVariavParcial, pois já foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
+							//zera-se a NdVariavParcial, pois jï¿½ foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
 							NdVariavParcial = 0.0;
 							
-							//calcula-se a NdVariavelParcial para o objeto selecionado através do método a seguir, que multiplica gama*valor*phi
+							//calcula-se a NdVariavelParcial para o objeto selecionado atravï¿½s do mï¿½todo a seguir, que multiplica gama*valor*phi
 							NdVariavParcial = acoesNv.CalculoVariavel(gama2_aux, valor2_aux, phi2_aux);
 				
 							//acrescenta-se o novo resultado no total
@@ -269,23 +261,23 @@ public class combinacoes {
 				}
 				
 				
-				//se houverem acoes variáveis DEPOIS da acao em análise no for maior (que é considerada a ação variável como principal) acessamos elas através do if+for a seguir
+				//se houverem acoes variï¿½veis DEPOIS da acao em anï¿½lise no for maior (que ï¿½ considerada a aï¿½ï¿½o variï¿½vel como principal) acessamos elas atravï¿½s do if+for a seguir
 				if(j<(listaNv.size()-1)) {
 					
 						for(int l=(j+1); l<listaNv.size(); l++) {
 							
-							//pegando um objeto da lista de normais variáveis (listaNv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
+							//pegando um objeto da lista de normais variï¿½veis (listaNv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
 							acoesNv = listaNv.get(l);
 							
-							//do objeto selecionado pelo for pegam-se as seguintes variáveis
+							//do objeto selecionado pelo for pegam-se as seguintes variï¿½veis
 							double valor2_aux = acoesNv.getValor();
 							double gama2_aux = acoesNv.getGama(); 
 							double phi2_aux = acoesNv.getPhi();
 							
-							//zera-se a NdVariavParcial, pois já foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
+							//zera-se a NdVariavParcial, pois jï¿½ foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
 							NdVariavParcial = 0.0;
 							
-							//calcula-se a NdVariavelParcial para o objeto selecionado através do método a seguir, que multiplica gama*valor*phi
+							//calcula-se a NdVariavelParcial para o objeto selecionado atravï¿½s do mï¿½todo a seguir, que multiplica gama*valor*phi
 							NdVariavParcial = acoesNv.CalculoVariavel(gama2_aux, valor2_aux, phi2_aux);
 							
 							//acrescenta-se o novo resultado no total
@@ -295,7 +287,7 @@ public class combinacoes {
 						
 				}
 				
-				//para o nome da acao nao ficar em formato numerico o bloco de codigo a seguir é realizado atribuindo a String nome o nome da acao correspondente ao número que a identifica
+				//para o nome da acao nao ficar em formato numerico o bloco de codigo a seguir ï¿½ realizado atribuindo a String nome o nome da acao correspondente ao nï¿½mero que a identifica
 				String nome=null;
 				if(nome_aux == 1) {
 					nome = "Peso proprio";
@@ -317,7 +309,7 @@ public class combinacoes {
 					nome = "Vento";
 				}
 
-				//Cria-se uma variável que receberá a soma da parte permanente e variável e será impressa juntamente com o nome da ação que é tida como principal	
+				//Cria-se uma variï¿½vel que receberï¿½ a soma da parte permanente e variï¿½vel e serï¿½ impressa juntamente com o nome da aï¿½ï¿½o que ï¿½ tida como principal	
 				double Ndtotal = 0.0; 
 				Ndtotal = NdVariavTot + NdPermTot;
 
@@ -327,18 +319,18 @@ public class combinacoes {
 				textoFinal = textoFinal + "\n\n A Nd para " + nome + " como principal, eh igual a: \n Nd= " + Ndtotal;
 		}//fim da parte de normais
 		
-		//MOMENTOS VARIÁVEIS
+		//MOMENTOS VARIï¿½VEIS
 						
 				for (int j=0; j < listaMv.size(); j++) {
 							
-							//acessando o objeto da lista de momentos variaveis que se comportará como principal nesta passagem do for
+							//acessando o objeto da lista de momentos variaveis que se comportarï¿½ como principal nesta passagem do for
 							acoesMv = listaMv.get(j);
 							
 							
 							//pegando variaveis para realizar os calculos
 							double valor_aux = acoesMv.getValor();
 							double gama_aux = acoesMv.getGama();
-							int nome_aux = acoesMv.getNome(); // É ESSE O NOME QUE VAI SER IMPRESSO NA TELA DIZENDO "CALCULO DE X PARA NOME COMO PRINCIPAL, SÓ USADO NO FINAL"
+							int nome_aux = acoesMv.getNome(); // ï¿½ ESSE O NOME QUE VAI SER IMPRESSO NA TELA DIZENDO "CALCULO DE X PARA NOME COMO PRINCIPAL, Sï¿½ USADO NO FINAL"
 							
 							double MdVariavParcial = 0.0;
 							
@@ -347,24 +339,24 @@ public class combinacoes {
 							MdVariavTot = MdVariavTot + MdVariavParcial;
 							
 							
-								//se houverem acoes variáveis ANTES da acao em análise no for maior (que é considerada a ação variável como principal) acessamos elas através do if+for a seguir
+								//se houverem acoes variï¿½veis ANTES da acao em anï¿½lise no for maior (que ï¿½ considerada a aï¿½ï¿½o variï¿½vel como principal) acessamos elas atravï¿½s do if+for a seguir
 								if(j>0) {
 								
 							
 										for(int k=0; k<j; k++) {
 								
-											//pegando um objeto da lista de momentos variáveis (listaMv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
+											//pegando um objeto da lista de momentos variï¿½veis (listaMv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
 											acoesMv = listaMv.get(k);
 									
-											//do objeto selecionado pelo for pegam-se as seguintes variáveis
+											//do objeto selecionado pelo for pegam-se as seguintes variï¿½veis
 											double valor2_aux = acoesMv.getValor();
 											double gama2_aux = acoesMv.getGama(); 
 											double phi2_aux = acoesMv.getPhi();
 								
-											//zera-se a MdVariavParcial, pois já foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
+											//zera-se a MdVariavParcial, pois jï¿½ foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
 											MdVariavParcial = 0.0;
 											
-											//calcula-se a MdVariavelParcial para o objeto selecionado através do método a seguir, que multiplica gama*valor*phi
+											//calcula-se a MdVariavelParcial para o objeto selecionado atravï¿½s do mï¿½todo a seguir, que multiplica gama*valor*phi
 											MdVariavParcial = acoesMv.CalculoVariavel(gama2_aux, valor2_aux, phi2_aux);
 								
 											//acrescenta-se o novo resultado no total
@@ -375,23 +367,23 @@ public class combinacoes {
 								}
 								
 								
-								//se houverem acoes variáveis DEPOIS da acao em análise no for maior (que é considerada a ação variável como principal) acessamos elas através do if+for a seguir
+								//se houverem acoes variï¿½veis DEPOIS da acao em anï¿½lise no for maior (que ï¿½ considerada a aï¿½ï¿½o variï¿½vel como principal) acessamos elas atravï¿½s do if+for a seguir
 								if(j<(listaMv.size()-1)) {
 									
 										for(int l=(j+1); l<listaMv.size(); l++) {
 											
-											//pegando um objeto da lista de momentos variáveis (listaMv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
+											//pegando um objeto da lista de momentos variï¿½veis (listaMv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
 											acoesMv = listaMv.get(l);
 											
-											//do objeto selecionado pelo for pegam-se as seguintes variáveis
+											//do objeto selecionado pelo for pegam-se as seguintes variï¿½veis
 											double valor2_aux = acoesMv.getValor();
 											double gama2_aux = acoesMv.getGama(); 
 											double phi2_aux = acoesMv.getPhi();
 											
-											//zera-se a MdVariavParcial, pois já foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
+											//zera-se a MdVariavParcial, pois jï¿½ foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
 											MdVariavParcial = 0.0;
 											
-											//calcula-se a MdVariavelParcial para o objeto selecionado através do método a seguir, que multiplica gama*valor*phi
+											//calcula-se a MdVariavelParcial para o objeto selecionado atravï¿½s do mï¿½todo a seguir, que multiplica gama*valor*phi
 											MdVariavParcial = acoesMv.CalculoVariavel(gama2_aux, valor2_aux, phi2_aux);
 											
 											//acrescenta-se o novo resultado no total
@@ -401,7 +393,7 @@ public class combinacoes {
 										
 								}
 								
-								//para o nome da acao nao ficar em formato numerico o bloco de codigo a seguir é realizado atribuindo a String nome o nome da acao correspondente ao número que a identifica
+								//para o nome da acao nao ficar em formato numerico o bloco de codigo a seguir ï¿½ realizado atribuindo a String nome o nome da acao correspondente ao nï¿½mero que a identifica
 								String nome=null;
 								if(nome_aux == 1) {
 									nome = "Peso proprio";
@@ -423,7 +415,7 @@ public class combinacoes {
 									nome = "Vento";
 								}
 		
-								//Cria-se uma variável que receberá a soma da parte permanente e variável e será impressa juntamente com o nome da ação que é tida como principal	
+								//Cria-se uma variï¿½vel que receberï¿½ a soma da parte permanente e variï¿½vel e serï¿½ impressa juntamente com o nome da aï¿½ï¿½o que ï¿½ tida como principal	
 								double Mdtotal = 0.0; 
 								Mdtotal = MdVariavTot + MdPermTot;
 		
@@ -433,18 +425,18 @@ public class combinacoes {
 								textoFinal = textoFinal + "\n\nA Md para " + nome + " como principal, eh igual a: \n Md= " + Mdtotal;	
 						} //fim da parte de momento
 		
-			//CORTANTES VARIÁVEIS
+			//CORTANTES VARIï¿½VEIS
 							
 					    for (int j=0; j < listaVv.size(); j++) {
 								
-								//acessando o objeto da lista de cortantes variaveis que se comportará como principal nesta passagem do for
+								//acessando o objeto da lista de cortantes variaveis que se comportarï¿½ como principal nesta passagem do for
 								acoesVv = listaVv.get(j);
 								
 								
 								//pegando variaveis para realizar os calculos
 								double valor_aux = acoesVv.getValor();
 								double gama_aux = acoesVv.getGama();
-								int nome_aux = acoesVv.getNome(); // É ESSE O NOME QUE VAI SER IMPRESSO NA TELA DIZENDO "CALCULO DE X PARA NOME COMO PRINCIPAL, SÓ USADO NO FINAL"
+								int nome_aux = acoesVv.getNome(); // ï¿½ ESSE O NOME QUE VAI SER IMPRESSO NA TELA DIZENDO "CALCULO DE X PARA NOME COMO PRINCIPAL, Sï¿½ USADO NO FINAL"
 								
 								double VdVariavParcial = 0.0;
 								
@@ -453,24 +445,24 @@ public class combinacoes {
 								VdVariavTot = VdVariavTot + VdVariavParcial;
 								
 								
-									//se houverem acoes variáveis ANTES da acao em análise no for maior (que é considerada a ação variável como principal) acessamos elas através do if+for a seguir
+									//se houverem acoes variï¿½veis ANTES da acao em anï¿½lise no for maior (que ï¿½ considerada a aï¿½ï¿½o variï¿½vel como principal) acessamos elas atravï¿½s do if+for a seguir
 									if(j>0) {
 									
 								
 											for(int k=0; k<j; k++) {
 									
-												//pegando um objeto da lista de cortantes variáveis (listaVv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
+												//pegando um objeto da lista de cortantes variï¿½veis (listaVv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
 												acoesVv = listaVv.get(k);
 										
-												//do objeto selecionado pelo for pegam-se as seguintes variáveis
+												//do objeto selecionado pelo for pegam-se as seguintes variï¿½veis
 												double valor2_aux = acoesVv.getValor();
 												double gama2_aux = acoesVv.getGama(); 
 												double phi2_aux = acoesVv.getPhi();
 									
-												//zera-se a VdVariavParcial, pois já foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
+												//zera-se a VdVariavParcial, pois jï¿½ foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
 												VdVariavParcial = 0.0;
 												
-												//calcula-se a VdVariavelParcial para o objeto selecionado através do método a seguir, que multiplica gama*valor*phi
+												//calcula-se a VdVariavelParcial para o objeto selecionado atravï¿½s do mï¿½todo a seguir, que multiplica gama*valor*phi
 												VdVariavParcial = acoesVv.CalculoVariavel(gama2_aux, valor2_aux, phi2_aux);
 									
 												//acrescenta-se o novo resultado no total
@@ -481,23 +473,23 @@ public class combinacoes {
 									}
 									
 									
-									//se houverem acoes variáveis DEPOIS da acao em análise no for maior (que é considerada a ação variável como principal) acessamos elas através do if+for a seguir
+									//se houverem acoes variï¿½veis DEPOIS da acao em anï¿½lise no for maior (que ï¿½ considerada a aï¿½ï¿½o variï¿½vel como principal) acessamos elas atravï¿½s do if+for a seguir
 									if(j<(listaVv.size()-1)) {
 										
 											for(int l=(j+1); l<listaVv.size(); l++) {
 												
-												//pegando um objeto da lista de cortantes variáveis (listaVv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
+												//pegando um objeto da lista de cortantes variï¿½veis (listaVv) que esteja antes do objeto da mesma lista (for maior) considerado como permanente
 												acoesVv = listaVv.get(l);
 												
-												//do objeto selecionado pelo for pegam-se as seguintes variáveis
+												//do objeto selecionado pelo for pegam-se as seguintes variï¿½veis
 												double valor2_aux = acoesVv.getValor();
 												double gama2_aux = acoesVv.getGama(); 
 												double phi2_aux = acoesVv.getPhi();
 												
-												//zera-se a VdVariavParcial, pois já foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
+												//zera-se a VdVariavParcial, pois jï¿½ foi utilizada anteriormente para armazenar o valor da acao variavel que se comporta como permanente
 												VdVariavParcial = 0.0;
 												
-												//calcula-se a VdVariavelParcial para o objeto selecionado através do método a seguir, que multiplica gama*valor*phi
+												//calcula-se a VdVariavelParcial para o objeto selecionado atravï¿½s do mï¿½todo a seguir, que multiplica gama*valor*phi
 												VdVariavParcial = acoesVv.CalculoVariavel(gama2_aux, valor2_aux, phi2_aux);
 												
 												//acrescenta-se o novo resultado no total
@@ -507,7 +499,7 @@ public class combinacoes {
 											
 									}
 									
-									//para o nome da acao nao ficar em formato numerico o bloco de codigo a seguir é realizado atribuindo a String nome o nome da acao correspondente ao número que a identifica
+									//para o nome da acao nao ficar em formato numerico o bloco de codigo a seguir ï¿½ realizado atribuindo a String nome o nome da acao correspondente ao nï¿½mero que a identifica
 									String nome=null;
 									if(nome_aux == 1) {
 										nome = "Peso proprio";
@@ -529,7 +521,7 @@ public class combinacoes {
 										nome = "Vento";
 									}
 			
-									//Cria-se uma variável que receberá a soma da parte permanente e variável e será impressa juntamente com o nome da ação que é tida como principal	
+									//Cria-se uma variï¿½vel que receberï¿½ a soma da parte permanente e variï¿½vel e serï¿½ impressa juntamente com o nome da aï¿½ï¿½o que ï¿½ tida como principal	
 									double Vdtotal = 0.0; 
 									Vdtotal = VdVariavTot + VdPermTot;
 			
@@ -539,14 +531,14 @@ public class combinacoes {
 									textoFinal = textoFinal + "\n\nA Vd para " + nome + " como principal, eh igual a: \n Vd= " + Vdtotal;
 							}
 		
-					    /*E se você acha que acabou o cálculo da Md você está muito enganado(a). Mesmo quando não temos momentos para uma ação considerada como principal, podemos
-						calcular a Md para aquela acao variável considerada como principal, o único porém é que todas as variáveis considerarão o phi em suas multiplicações*/
+					    /*E se vocï¿½ acha que acabou o cï¿½lculo da Md vocï¿½ estï¿½ muito enganado(a). Mesmo quando nï¿½o temos momentos para uma aï¿½ï¿½o considerada como principal, podemos
+						calcular a Md para aquela acao variï¿½vel considerada como principal, o ï¿½nico porï¿½m ï¿½ que todas as variï¿½veis considerarï¿½o o phi em suas multiplicaï¿½ï¿½es*/
 						
-						//Varrendo toda a listaA para ver se tenho alguma ação variável que não possui normal, momento ou cortante
+						//Varrendo toda a listaA para ver se tenho alguma aï¿½ï¿½o variï¿½vel que nï¿½o possui normal, momento ou cortante
 						
 						for (int p=0; p < listaA.size(); p++) {
 							
-								//acessando, pelo método get, os objetos da lista A percorridos pelo for
+								//acessando, pelo mï¿½todo get, os objetos da lista A percorridos pelo for
 								novaAcao = listaA.get(p);
 								
 								//Coletando nome, tipo e mnv do objeto em foco
@@ -557,7 +549,7 @@ public class combinacoes {
 								
 								
 						
-								//criando sublista das ações da sobrecarga
+								//criando sublista das aï¿½ï¿½es da sobrecarga
 								if(nome3_aux==3) {
 									
 									Sobrecarga = new acoes(mnv3_aux,nome3_aux ,valor3_aux);
@@ -566,7 +558,7 @@ public class combinacoes {
 									
 								}
 								
-								//criando sublista das ações da temperatura
+								//criando sublista das aï¿½ï¿½es da temperatura
 								if(nome3_aux==4) {
 									
 									temperatura = new acoes(mnv3_aux,nome3_aux ,valor3_aux);
@@ -575,7 +567,7 @@ public class combinacoes {
 									
 								}
 								
-								//criando sublista das ações do vento
+								//criando sublista das aï¿½ï¿½es do vento
 								if(nome3_aux==5) {
 									
 									vento = new acoes(mnv3_aux,nome3_aux ,valor3_aux);
@@ -595,7 +587,7 @@ public class combinacoes {
 								//varrendo a lista de acoes de sobrecarga e entendendo se falta alguma(mnv)
 								for (int z=0; z < listaQ.size(); z++) {
 									
-										//acessando, pelo método get, os objetos da lista A percorridos pelo for
+										//acessando, pelo mï¿½todo get, os objetos da lista A percorridos pelo for
 										Sobrecarga = listaQ.get(z);
 										int mnv_aux4 = Sobrecarga.getMnv();
 
@@ -618,21 +610,21 @@ public class combinacoes {
 								}	
 									
 									if(m==0) {
-										 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+										 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 									    double Mdtotal2 = 0.0;
 									    
 										for (int t=0; t<listaMv.size();t++) {
 											
-												//pegando o objeto na posição t da listaMv	
+												//pegando o objeto na posiï¿½ï¿½o t da listaMv	
 												listaMv.get(t);
 											
-												//pegando valor, gama e phi do objeto da listaMv em questão
+												//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 												double valor_auxiliar = acoesMv.getValor();
 												double gama_auxiliar = acoesMv.getGama();
 											    double phi_auxiliar = acoesMv.getPhi();
 											    
 						
-											    //atribuindo resultado parcial à soma total
+											    //atribuindo resultado parcial ï¿½ soma total
 											    double MdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 											    Mdtotal2 = Mdtotal2  + MdParcial;	
 											    
@@ -644,21 +636,21 @@ public class combinacoes {
 									}
 									
 									if(n==0) {
-										 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+										 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 									    double Ndtotal2 = 0.0;
 									    
 										for (int t=0; t<listaNv.size();t++) {
 											
-												//pegando o objeto na posição t da listaMv	
+												//pegando o objeto na posiï¿½ï¿½o t da listaMv	
 												listaNv.get(t);
 											
-												//pegando valor, gama e phi do objeto da listaMv em questão
+												//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 												double valor_auxiliar = acoesNv.getValor();
 												double gama_auxiliar = acoesNv.getGama();
 											    double phi_auxiliar = acoesNv.getPhi();
 											    
 						
-											    //atribuindo resultado parcial à soma total
+											    //atribuindo resultado parcial ï¿½ soma total
 											    double NdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 											    Ndtotal2 = Ndtotal2  + NdParcial;	
 											    
@@ -671,21 +663,21 @@ public class combinacoes {
 							
 								
 									if(v==0) {
-										 //varrendo todas as acoes cortantes-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+										 //varrendo todas as acoes cortantes-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 									    double Vdtotal2 = 0.0;
 									    
 										for (int t=0; t<listaVv.size();t++) {
 											
-												//pegando o objeto na posição t da listaVv	
+												//pegando o objeto na posiï¿½ï¿½o t da listaVv	
 												listaVv.get(t);
 											
-												//pegando valor, gama e phi do objeto da listaMv em questão
+												//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 												double valor_auxiliar = acoesVv.getValor();
 												double gama_auxiliar = acoesVv.getGama();
 											    double phi_auxiliar = acoesVv.getPhi();
 											    
 						
-											    //atribuindo resultado parcial à soma total
+											    //atribuindo resultado parcial ï¿½ soma total
 											    double VdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 											    Vdtotal2 = Vdtotal2  + VdParcial;	
 											    
@@ -707,7 +699,7 @@ public class combinacoes {
 									//varrendo a lista de acoes de sobrecarga e entendendo se falta alguma(mnv)
 									for (int z=0; z < listaT.size(); z++) {
 										
-											//acessando, pelo método get, os objetos da lista A percorridos pelo for
+											//acessando, pelo mï¿½todo get, os objetos da lista A percorridos pelo for
 											temperatura = listaT.get(z);
 											int mnv_aux4 = temperatura.getMnv();
 
@@ -730,21 +722,21 @@ public class combinacoes {
 									}	
 										
 										if(m1==0) {
-											 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+											 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 										    double Mdtotal2 = 0.0;
 										    
 											for (int t=0; t<listaMv.size();t++) {
 												
-													//pegando o objeto na posição t da listaMv	
+													//pegando o objeto na posiï¿½ï¿½o t da listaMv	
 													listaMv.get(t);
 												
-													//pegando valor, gama e phi do objeto da listaMv em questão
+													//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 													double valor_auxiliar = acoesMv.getValor();
 													double gama_auxiliar = acoesMv.getGama();
 												    double phi_auxiliar = acoesMv.getPhi();
 												    
 							
-												    //atribuindo resultado parcial à soma total
+												    //atribuindo resultado parcial ï¿½ soma total
 												    double MdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 												    Mdtotal2 = Mdtotal2  + MdParcial;	
 												    
@@ -756,21 +748,21 @@ public class combinacoes {
 										}
 										
 										if(n1==0) {
-											 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+											 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 										    double Ndtotal2 = 0.0;
 										    
 											for (int t=0; t<listaNv.size();t++) {
 												
-													//pegando o objeto na posição t da listaMv	
+													//pegando o objeto na posiï¿½ï¿½o t da listaMv	
 													listaNv.get(t);
 												
-													//pegando valor, gama e phi do objeto da listaMv em questão
+													//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 													double valor_auxiliar = acoesNv.getValor();
 													double gama_auxiliar = acoesNv.getGama();
 												    double phi_auxiliar = acoesNv.getPhi();
 												    
 							
-												    //atribuindo resultado parcial à soma total
+												    //atribuindo resultado parcial ï¿½ soma total
 												    double NdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 												    Ndtotal2 = Ndtotal2  + NdParcial;	
 												    
@@ -783,21 +775,21 @@ public class combinacoes {
 								
 									
 										if(v1==0) {
-											 //varrendo todas as acoes cortantes-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+											 //varrendo todas as acoes cortantes-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 										    double Vdtotal2 = 0.0;
 										    
 											for (int t=0; t<listaVv.size();t++) {
 												
-													//pegando o objeto na posição t da listaVv	
+													//pegando o objeto na posiï¿½ï¿½o t da listaVv	
 													listaVv.get(t);
 												
-													//pegando valor, gama e phi do objeto da listaMv em questão
+													//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 													double valor_auxiliar = acoesVv.getValor();
 													double gama_auxiliar = acoesVv.getGama();
 												    double phi_auxiliar = acoesVv.getPhi();
 												    
 							
-												    //atribuindo resultado parcial à soma total
+												    //atribuindo resultado parcial ï¿½ soma total
 												    double VdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 												    Vdtotal2 = Vdtotal2  + VdParcial;	
 												    
@@ -819,7 +811,7 @@ public class combinacoes {
 										//varrendo a lista de acoes de sobrecarga e entendendo se falta alguma(mnv)
 										for (int z=0; z < listaW.size(); z++) {
 											
-												//acessando, pelo método get, os objetos da lista A percorridos pelo for
+												//acessando, pelo mï¿½todo get, os objetos da lista A percorridos pelo for
 												vento = listaW.get(z);
 												int mnv_aux4 = vento.getMnv();
 
@@ -842,21 +834,21 @@ public class combinacoes {
 										}	
 											
 											if(m2==0) {
-												 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+												 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 											    double Mdtotal2 = 0.0;
 											    
 												for (int t=0; t<listaMv.size();t++) {
 													
-														//pegando o objeto na posição t da listaMv	
+														//pegando o objeto na posiï¿½ï¿½o t da listaMv	
 														listaMv.get(t);
 													
-														//pegando valor, gama e phi do objeto da listaMv em questão
+														//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 														double valor_auxiliar = acoesMv.getValor();
 														double gama_auxiliar = acoesMv.getGama();
 													    double phi_auxiliar = acoesMv.getPhi();
 													    
 								
-													    //atribuindo resultado parcial à soma total
+													    //atribuindo resultado parcial ï¿½ soma total
 													    double MdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 													    Mdtotal2 = Mdtotal2  + MdParcial;	
 													    
@@ -868,21 +860,21 @@ public class combinacoes {
 											}
 											
 											if(n2==0) {
-												 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+												 //varrendo todas as acoes momentos-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 											    double Ndtotal2 = 0.0;
 											    
 												for (int t=0; t<listaNv.size();t++) {
 													
-														//pegando o objeto na posição t da listaMv	
+														//pegando o objeto na posiï¿½ï¿½o t da listaMv	
 														listaNv.get(t);
 													
-														//pegando valor, gama e phi do objeto da listaMv em questão
+														//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 														double valor_auxiliar = acoesNv.getValor();
 														double gama_auxiliar = acoesNv.getGama();
 													    double phi_auxiliar = acoesNv.getPhi();
 													    
 								
-													    //atribuindo resultado parcial à soma total
+													    //atribuindo resultado parcial ï¿½ soma total
 													    double NdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 													    Ndtotal2 = Ndtotal2  + NdParcial;	
 													    
@@ -895,21 +887,21 @@ public class combinacoes {
 									
 										
 											if(v2==0) {
-												 //varrendo todas as acoes cortantes-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma será considerada como permanente 
+												 //varrendo todas as acoes cortantes-variaveis e submetendo elas ao CalculoVariaveis pois nenhuma serï¿½ considerada como permanente 
 											    double Vdtotal2 = 0.0;
 											    
 												for (int t=0; t<listaVv.size();t++) {
 													
-														//pegando o objeto na posição t da listaVv	
+														//pegando o objeto na posiï¿½ï¿½o t da listaVv	
 														listaVv.get(t);
 													
-														//pegando valor, gama e phi do objeto da listaMv em questão
+														//pegando valor, gama e phi do objeto da listaMv em questï¿½o
 														double valor_auxiliar = acoesVv.getValor();
 														double gama_auxiliar = acoesVv.getGama();
 													    double phi_auxiliar = acoesVv.getPhi();
 													    
 								
-													    //atribuindo resultado parcial à soma total
+													    //atribuindo resultado parcial ï¿½ soma total
 													    double VdParcial = (gama_auxiliar * valor_auxiliar * phi_auxiliar);
 													    Vdtotal2 = Vdtotal2  + VdParcial;	
 													    

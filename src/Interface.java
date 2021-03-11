@@ -1,14 +1,9 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Canvas;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.SystemColor;
-import java.awt.Panel;
-import java.awt.Label;
 import java.awt.TextArea;
 
 import javax.swing.JFrame;
@@ -18,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.DropMode;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -39,24 +33,19 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Interface extends JFrame {
-
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JPanel whiteBkgdPane;
 	private JComboBox<String> comboBox;
 	private JComboBox<String> comboBox_1;
 	private JTextField magnitude;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField maiorRisco;
-	private JTextField menorRisco;
 	private TextArea painelResultados;
 	
 	private int contadorDeAcoes = 0;
 	
-	ArrayList<acoes> listaA = new ArrayList<acoes>(); //Lista com as seções de ação
+	ArrayList<acoes> listaA = new ArrayList<acoes>(); //Lista com as seï¿½ï¿½es de aï¿½ï¿½o
 	acoes novaAcao = null;
 	
 	public static void main(String[] args) {
@@ -107,14 +96,14 @@ public class Interface extends JFrame {
 		lblCalculadoraDe.setForeground(Color.WHITE);
 		contentPane.add(lblCalculadoraDe);
 		
-		JLabel lblNewLabel = new JLabel("Tipo de ação:\n");
+		JLabel lblNewLabel = new JLabel("Tipo de aï¿½ï¿½o:\n");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(150, 120, 100, 25);
 		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 12));
 		lblNewLabel.setForeground(Color.WHITE);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabe2 = new JLabel("Categoria da ação:\n");
+		JLabel lblNewLabe2 = new JLabel("Categoria da aï¿½ï¿½o:\n");
 		lblNewLabe2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabe2.setBounds(295, 120, 110, 25);
 		lblNewLabe2.setFont(new Font("Roboto", Font.PLAIN, 12));
@@ -141,7 +130,7 @@ public class Interface extends JFrame {
 		contentPane.add(comboBox_1);
 		comboBox_1.addItem("");
 		comboBox_1.addItem("Peso Proprio");
-		comboBox_1.addItem("Retração");
+		comboBox_1.addItem("Retraï¿½ï¿½o");
 		comboBox_1.addItem("Sobrecarga");
 		comboBox_1.addItem("Temperatura");
 		comboBox_1.addItem("Vento");
@@ -156,15 +145,15 @@ public class Interface extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				contadorDeAcoes = contadorDeAcoes + 1;// Add ação
-				//Preparação dos dados para impressão no painel
+				contadorDeAcoes = contadorDeAcoes + 1;// Add aï¿½ï¿½o
+				//Preparaï¿½ï¿½o dos dados para impressï¿½o no painel
 				String tipoAcao = (String) comboBox.getSelectedItem(); 
 				String categAcao = (String) comboBox_1.getSelectedItem();
 				double mgntd = Double.parseDouble(magnitude.getText());
 				
-				String texto = "---------------------------------------------- \n Ação: " + contadorDeAcoes + "\n\n" 
-						+ " - Tipo de ação: " + tipoAcao + "\n\n" 
-						+ " - Categoria da ação: " + categAcao + "\n\n"
+				String texto = "---------------------------------------------- \n Aï¿½ï¿½o: " + contadorDeAcoes + "\n\n" 
+						+ " - Tipo de aï¿½ï¿½o: " + tipoAcao + "\n\n" 
+						+ " - Categoria da aï¿½ï¿½o: " + categAcao + "\n\n"
 						+ " - Grandeza: " + mgntd + "\n\n";
 				
 				//Adicionando ao ArrayList listaA o obj com os dados
@@ -176,7 +165,7 @@ public class Interface extends JFrame {
 				listaA.add(novaAcao);
 				System.out.println("nova acao: " + novaAcao.getMnv() + "\n " + novaAcao.getNome() + "\n" + novaAcao.getValor());
 				
-				//Recupera oq ja estava escrito antes e adiciona as informações ao painel
+				//Recupera oq ja estava escrito antes e adiciona as informaï¿½ï¿½es ao painel
 				painelResultados.setText(painelResultados.getText() + "\n" + texto); 
 				//Limpeza dos inputs
 				magnitude.setText("");
@@ -240,7 +229,7 @@ public class Interface extends JFrame {
 					String retorno = new String(Files.readAllBytes(path));
 					painelResultados.setText(retorno);
 				}catch(Exception erro){
-					JOptionPane.showInputDialog(this, "arquivo não carregado");
+					JOptionPane.showInputDialog(this, "arquivo nï¿½o carregado");
 				}
 				}
 			}
