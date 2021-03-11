@@ -87,7 +87,7 @@ public class Interface extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 20, 800, 750);
-		contentPane = new panelComponent(); //Componente onde está a imagem de background da calduladora
+		contentPane = new panelComponent(); //Componente onde esta a imagem de background da calduladora
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setForeground(Color.WHITE);
@@ -96,7 +96,7 @@ public class Interface extends JFrame {
 		JLabel lblCCEDE = new JLabel("CCEDE");
 		lblCCEDE.setFont(new Font("hooge 05_54", Font.BOLD, 22));
 		lblCCEDE.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCCEDE.setBounds(6, 10, 100, 25);
+		lblCCEDE.setBounds(350, 7, 100, 25);
 		lblCCEDE.setForeground(Color.WHITE);
 		contentPane.add(lblCCEDE);
 		
@@ -140,7 +140,7 @@ public class Interface extends JFrame {
 		comboBox_1.setBounds(300, 150, 100, 25);
 		contentPane.add(comboBox_1);
 		comboBox_1.addItem("");
-		comboBox_1.addItem("Peso Próprio");
+		comboBox_1.addItem("Peso Proprio");
 		comboBox_1.addItem("Retração");
 		comboBox_1.addItem("Sobrecarga");
 		comboBox_1.addItem("Temperatura");
@@ -217,10 +217,10 @@ public class Interface extends JFrame {
 		contentPane.add(painelResultados);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(600, 250, 55, 21);
+		menuBar.setBounds(0, 0, 70, 21);
 		contentPane.add(menuBar);
 		
-		JMenu mnFile = new JMenu("Salvar");
+		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
 		JMenuItem mntmAbrir = new JMenuItem("Abrir");
@@ -279,6 +279,49 @@ public class Interface extends JFrame {
 			}
 		});
 		mnFile.add(mntmSair);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("EX_1\r\n");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				 try { 
+
+					   java.awt.Desktop desktop = java.awt.Desktop.getDesktop();           
+					   desktop.open(new File("AULA 21_EX_1.pdf")); 
+
+					} catch (IOException ex) {
+					    System.out.println(ex);
+					} 
+			}
+		});
+		mnHelp.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("EX_2");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try { 
+
+					   java.awt.Desktop desktop = java.awt.Desktop.getDesktop();           
+					   desktop.open(new File("AULA 21_EX_2.pdf")); 
+
+					} catch (IOException ex) {
+					    System.out.println(ex);
+					} 
+			}
+		});
+		mnHelp.add(mntmNewMenuItem_1);
+		
+		JButton btnApagar = new JButton("Apagar");
+		btnApagar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				painelResultados.setText("");
+			}
+		});
+		btnApagar.setFont(btnApagar.getFont().deriveFont(btnApagar.getFont().getStyle() | Font.BOLD));
+		btnApagar.setBounds(685, 272, 89, 23);
+		contentPane.add(btnApagar);
 		
 		
 	}
