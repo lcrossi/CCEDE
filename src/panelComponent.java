@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 
 public class panelComponent extends JPanel{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	JPanel contentPane;
 	
 	void painel(){
@@ -24,7 +28,7 @@ public class panelComponent extends JPanel{
          g.drawImage(imagem, 0, 0, this);
             }    
         catch(Exception e) {  
-           System.out.println("Imagem n„o localizada");  
+           System.out.println("Imagem n√£o localizada");  
         }  
     }
 	

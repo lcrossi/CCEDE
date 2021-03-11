@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class combinacoes {
 	//String com tudo o que se quer imprimir no painel
-	String textoFinal = "\n\n ----------------------------------------------- \n RELAT�RIO \n ----------------------------------------------- \n";
+	String textoFinal = "\n\n ----------------------------------------------- \n RELATÓRIO \n ----------------------------------------------- \n";
 	 
 	public String getRelatorio() {
 		 return textoFinal;
