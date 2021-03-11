@@ -45,7 +45,7 @@ public class Interface extends JFrame {
 	
 	private int contadorDeAcoes = 0;
 	
-	ArrayList<acoes> listaA = new ArrayList<acoes>(); //Lista com as se��es de a��o
+	ArrayList<acoes> listaA = new ArrayList<acoes>(); //Lista com as seções de ação
 	acoes novaAcao = null;
 	
 	public static void main(String[] args) {
@@ -96,14 +96,14 @@ public class Interface extends JFrame {
 		lblCalculadoraDe.setForeground(Color.WHITE);
 		contentPane.add(lblCalculadoraDe);
 		
-		JLabel lblNewLabel = new JLabel("Tipo de a��o:\n");
+		JLabel lblNewLabel = new JLabel("Tipo de ação:\n");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(150, 120, 100, 25);
 		lblNewLabel.setFont(new Font("Roboto", Font.PLAIN, 12));
 		lblNewLabel.setForeground(Color.WHITE);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabe2 = new JLabel("Categoria da a��o:\n");
+		JLabel lblNewLabe2 = new JLabel("Categoria da ação:\n");
 		lblNewLabe2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabe2.setBounds(295, 120, 110, 25);
 		lblNewLabe2.setFont(new Font("Roboto", Font.PLAIN, 12));
@@ -130,7 +130,7 @@ public class Interface extends JFrame {
 		contentPane.add(comboBox_1);
 		comboBox_1.addItem("");
 		comboBox_1.addItem("Peso Proprio");
-		comboBox_1.addItem("Retra��o");
+		comboBox_1.addItem("Retração");
 		comboBox_1.addItem("Sobrecarga");
 		comboBox_1.addItem("Temperatura");
 		comboBox_1.addItem("Vento");
@@ -145,15 +145,15 @@ public class Interface extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				contadorDeAcoes = contadorDeAcoes + 1;// Add a��o
-				//Prepara��o dos dados para impress�o no painel
+				contadorDeAcoes = contadorDeAcoes + 1;// Add ação
+				//Preparação dos dados para impressão no painel
 				String tipoAcao = (String) comboBox.getSelectedItem(); 
 				String categAcao = (String) comboBox_1.getSelectedItem();
 				double mgntd = Double.parseDouble(magnitude.getText());
 				
-				String texto = "---------------------------------------------- \n A��o: " + contadorDeAcoes + "\n\n" 
-						+ " - Tipo de a��o: " + tipoAcao + "\n\n" 
-						+ " - Categoria da a��o: " + categAcao + "\n\n"
+				String texto = "---------------------------------------------- \n ação: " + contadorDeAcoes + "\n\n" 
+						+ " - Tipo de ação: " + tipoAcao + "\n\n" 
+						+ " - Categoria da ação: " + categAcao + "\n\n"
 						+ " - Grandeza: " + mgntd + "\n\n";
 				
 				//Adicionando ao ArrayList listaA o obj com os dados
@@ -165,7 +165,7 @@ public class Interface extends JFrame {
 				listaA.add(novaAcao);
 				System.out.println("nova acao: " + novaAcao.getMnv() + "\n " + novaAcao.getNome() + "\n" + novaAcao.getValor());
 				
-				//Recupera oq ja estava escrito antes e adiciona as informa��es ao painel
+				//Recupera oq ja estava escrito antes e adiciona as informações ao painel
 				painelResultados.setText(painelResultados.getText() + "\n" + texto); 
 				//Limpeza dos inputs
 				magnitude.setText("");
@@ -229,7 +229,7 @@ public class Interface extends JFrame {
 					String retorno = new String(Files.readAllBytes(path));
 					painelResultados.setText(retorno);
 				}catch(Exception erro){
-					JOptionPane.showInputDialog(this, "arquivo n�o carregado");
+					JOptionPane.showInputDialog(this, "arquivo não carregado");
 				}
 				}
 			}
